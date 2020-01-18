@@ -5,7 +5,7 @@ var isProduction = process.env.NODE_ENV === 'production';
 
 //NOTE Import DB
 require('../models/Lesson');
-
+app.use(require('../routes'));
 
 if (isProduction) {
     mongoose.connect(process.env.MONGODB_URI, {
@@ -21,5 +21,4 @@ if (isProduction) {
     });
     mongoose.set('debug', true);
 }
-
 module.exports = app;
