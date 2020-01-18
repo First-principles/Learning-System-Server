@@ -1,7 +1,6 @@
 var router = require('express').Router();
 const { RouteNames } = require("../../constants/constants");
-
-router.use(RouteNames.AddLesson, require('./lessons'));
+router.use(RouteNames.base, require('./lessons'));
 
 router.use(function(err, req, res, next) {
     if (err.name === 'ValidationError') {
