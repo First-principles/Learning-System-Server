@@ -28,6 +28,7 @@ var UserSchema = new mongoose.Schema({
         match: [/\S+@\S+\.\S+/, 'is invalid'],
         index: true,
     },
+    contacts: [],
     bio: String,
     avtar: String,
     favorite_Lessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],

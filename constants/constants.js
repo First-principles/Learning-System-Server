@@ -1,5 +1,7 @@
 const RouteNames = {
-    AddLesson: "/lesson"
+    AddLesson: "/lesson",
+    AddUser: "/register",
+    Login: "/login"
 };
 
 module.exports = { RouteNames };

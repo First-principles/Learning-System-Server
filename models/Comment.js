@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 
-var CourseSchema = new mongoose.Schema({
-    title: String,
-    description: String,
+var CommentSchema = new mongoose.Schema({
     images: Buffer,
     favoritesCount: { type: Number, default: 0 },
     lessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
@@ -11,4 +9,4 @@ var CourseSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-mongoose.model('Course', CourseSchema);
+mongoose.model('Course', CommentSchema);
