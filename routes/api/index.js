@@ -3,6 +3,7 @@ const { RouteNames } = require("../../constants/constants");
 
 router.use(RouteNames.base, require('./lessons'));
 router.use(RouteNames.base, require('./courses'));
+router.use(RouteNames.base, require('./users'));
 
 router.use(function(err, req, res, next) {
     if (err.name === 'ValidationError') {
