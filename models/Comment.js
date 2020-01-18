@@ -9,4 +9,4 @@ var CommentSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-mongoose.model('Course', CommentSchema);
+mongoose.model('Comment', CommentSchema);

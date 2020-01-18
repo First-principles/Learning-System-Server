@@ -5,6 +5,11 @@ var isProduction = process.env.NODE_ENV === 'production';
 
 //NOTE Import DB
 require('../models/Lesson');
+require('../models/Course');
+require('../models/User');
+require('../models/Comment');
+
+//NOTE Import API
 app.use(require('../routes'));
 
 if (isProduction) {

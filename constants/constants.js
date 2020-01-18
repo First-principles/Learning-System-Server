@@ -1,8 +1,9 @@
 const RouteNames = {
+    base: "/",
     AddLesson: "/lesson",
     AddUser: "/register",
     Login: "/login",
-    base: "/"
+    AddCourse: "/course"
 };
 
 module.exports = { RouteNames };
