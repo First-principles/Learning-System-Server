@@ -24,7 +24,7 @@ router.post(RouteNames.AddUser, function(req, res, next) {
             }
             return res.status(422).send(err);
         }
-        res.json({
+        res.status(202).json({
             username: user.username,
             email: user.email,
             token: user.token
@@ -48,9 +48,9 @@ router.post(RouteNames.Login, async function(req, res, next) {
                 return res.status(202).json(
                     user.toAuthJSON()
                 )
-
-
-            };
+            } else {
+                return res.status(422).send({ errors: { authentication: "authentication error" } })
+            }
         }
     ).catch(next);
 });
