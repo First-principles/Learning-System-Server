@@ -4,9 +4,8 @@
     "description": "Website for Web community",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon server/app.js",
-        "test": "jest --watch"
+        "test": "jest --watch",
+        "start": "nodemon server/app.js"
     },
     "repository": {
         "type": "git",
@@ -23,6 +22,7 @@
         "chai": "^4.2.0",
         "crypto": "^1.0.1",
         "express": "^4.17.1",
+        "express-jwt": "^5.3.1",
         "express-session": "^1.17.0",
         "jest": "^24.9.0",
         "jsonwebtoken": "^8.5.1",
