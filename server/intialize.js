@@ -10,4 +10,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+// require('../config/passport');
+
+
 module.exports = app;

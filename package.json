@@ -20,10 +20,14 @@
     "dependencies": {
         "body-parser": "^1.19.0",
         "chai": "^4.2.0",
+        "crypto": "^1.0.1",
         "express": "^4.17.1",
         "express-session": "^1.17.0",
         "jest": "^24.9.0",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.8.9",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
         "supertest": "^4.0.2"
     }
 }

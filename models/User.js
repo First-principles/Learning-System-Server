@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 const config = require('../config/config');
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
 var UserSchema = new mongoose.Schema({
     username: {
@@ -44,8 +46,32 @@ UserSchema.methods.setPassword = function(password) {
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
+UserSchema.methods.generateJWT = function() {
+    var today = new Date();
+    var exp = new Date(today);
+    exp.setDate(today.getDate() + 60);
 
+    return jwt.sign({
+        id: this._id,
+        username: this.username,
+        exp: parseInt(exp.getTime() / 1000),
+    }, config.secret);
+};
 
+UserSchema.methods.toAuthJSON = function() {
+    return {
+        username: this.username,
+        email: this.email,
+        //TODO generateJWT [Done]
+        token: this.generateJWT(),
+        bio: this.bio,
+        image: this.image
+    };
+};
 
+UserSchema.methods.validPassword = function(password) {
+    var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+    return this.hash === hash;
+};
 
 mongoose.model('User', UserSchema);

@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var passport = require("passport");
 
 const { RouteNames } = require("../../constants/constants");
 
@@ -13,6 +14,7 @@ router.post(RouteNames.AddUser, function(req, res, next) {
         user.last_name = UserInfo.last_name;
         user.email = UserInfo.email;
         user.setPassword(UserInfo.password);
+        user.token = user.generateJWT();
     } catch (e) {}
 
     user.save(function(err) {
@@ -28,7 +30,31 @@ router.post(RouteNames.AddUser, function(req, res, next) {
             token: user.token
         });
     });
-})
+});
+
+//SECTION login 
+router.post(RouteNames.Login, async function(req, res, next) {
+    const UserInfo = req.body.user;
+    if (!UserInfo.email) {
+        res.send(422).json({ error: { message: "please provide email " } });
+    };
+    if (!UserInfo.password) {
+        return res.status(422).json({ errors: { password: "can't be blank" } });
+    };
+    var user = await User.findOne({ email: UserInfo.email }).then(
+        user => {
+            console.log(user);
+            if (user.validPassword(UserInfo.password)) {
+                return res.status(202).json(
+                    user.toAuthJSON()
+                )
+
+
+            };
+        }
+    ).catch(next);
+});
+
 
 
 
