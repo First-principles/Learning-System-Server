@@ -5,6 +5,4 @@ const AddCourse = require("../methods/courses");
 
 router.post(RouteNames.AddCourse, auth.required, AddCourse);
 
-
-
 module.exports = router;
