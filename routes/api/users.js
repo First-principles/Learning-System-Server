@@ -1,26 +1,34 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
-var Lesson = mongoose.model('User');
+var User = mongoose.model('User');
 
 const { RouteNames } = require("../../constants/constants");
 
 router.post(RouteNames.AddUser, function(req, res, next) {
-    var user;
+    var user = new User();
+    const UserInfo = req.body.user;
     try {
-        user = new user(req.body.user);
-    } catch (e) {
-        res.status(400).send({ error: { message: "couldn't save User" } });
-    }
+        user.username = UserInfo.username;
+        user.first_name = UserInfo.first_name;
+        user.last_name = UserInfo.last_name;
+        user.email = UserInfo.email;
+        user.setPassword(UserInfo.password);
+    } catch (e) {}
 
-    user.save().then(function() {
-        //user = user.toAuthJSON();
-        return res.json({
+    user.save(function(err) {
+        if (err) {
+            if (err.name === 'MongoError' && err.code === 11000) {
+                return res.status(422).send({ succes: false, message: 'User already exist!' });
+            }
+            return res.status(422).send(err);
+        }
+        res.json({
+            username: user.username,
             email: user.email,
-            username: user.username
+            token: user.token
         });
-    }).catch(next);
-
-});
+    });
+})
 
 
 
