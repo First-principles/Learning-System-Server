@@ -1,13 +1,14 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var Course = mongoose.model('Course');
-//var User = mongoose.model('User');
+var User = mongoose.model('User');
 const { RouteNames } = require("../../constants/constants");
 const auth = require("../../helper/helper");
 
 router.post(RouteNames.AddCourse, auth.required, (req, res, next) => {
     const course = new Course();
     const courseInfo = req.body.course;
+    console.log(courseInfo);
     try {
         course.title = courseInfo.title;
         course.description = courseInfo.description;
