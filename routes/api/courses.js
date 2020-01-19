@@ -5,13 +5,18 @@ var Course = mongoose.model('Course');
 const { RouteNames } = require("../../constants/constants");
 
 router.post(RouteNames.AddCourse, (req, res, next) => {
+    const course = new Course();
     try {
-        const course = new Course(req.body.course);
-        course.save();
-        res.status(202).send({ course });
+        course.title = req.body.course.title;
+        course.description = req.body.description;
+
     } catch (e) {
         res.status(400).send({ error: { message: "couldn't save Course" } });
     }
+    course.save().then(() => {
+        res.status(202).send({ course });
+    }).catch(next);
+
 });
 
 

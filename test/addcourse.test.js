@@ -3,7 +3,13 @@ const app = require('../server/server');
 var { RouteNames } = require("../constants/constants");
 var expect = require('chai').expect;
 
-ValidUser = {
+const ValidUser = {
+    username: "hi",
+    email: "hi@gmail.com",
+    password: "hello"
+};
+
+const NotValidUser = {
     username: "hi",
     email: "hi@gmail.com",
     password: "hello"
@@ -30,7 +36,8 @@ describe('Registeration Tests', () => {
     //SECTION Bad Registeration
     it(TestNames.Regiseration_Case2, function(done) {
         request(App)
-            .post(TestRoutes.signup).send({ NotValidUser })
+            .post(RouteNames.AddUser)
+            .send({ NotValidUser })
             .end(function(err, response) {
                 if (err) {
                     return err;
