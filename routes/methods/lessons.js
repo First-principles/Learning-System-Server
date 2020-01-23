@@ -7,7 +7,7 @@ const addlesson = (req, res, next) => {
     const LessonInfo = req.body.lesson;
     const CourseInfo = req.body.course;
 
-    Course.findOne(CourseInfo)
+    Course.findById(LessonInfo.CourseID)
         .then(course => {
             if (!course) {
                 res.status(422).send({ errors: { message: "Course not found" } });

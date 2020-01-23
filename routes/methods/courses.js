@@ -12,7 +12,8 @@ const AddCourse = (req, res, next) => {
     course.save().then(() => {
         res.status(202).send({
             title: course.title,
-            description: course.description
+            description: course.description,
+            id: course.id
         });
     }).catch(next);
 };
