@@ -9,7 +9,7 @@ describe('Lessons Tests', () => {
     it("Create lesson while not autorized", (done) => {
         request(app)
             .post(RouteNames.AddLesson)
-            .send(config.Course)
+            .send(config.lesson)
             .set("Accept", "application/json")
             .end(function(err, response) {
                 if (err) {
@@ -24,7 +24,7 @@ describe('Lessons Tests', () => {
     it("Create Lesson while autorized", (done) => {
         request(app)
             .post(RouteNames.AddLesson)
-            .send(config.Course)
+            .send(config.lesson)
             .set("Accept", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
@@ -38,9 +38,11 @@ describe('Lessons Tests', () => {
     });
 
     it("Create Lesson for non-existing Course", (done) => {
+        const lesson = config.lesson;
+        lesson.CourseID = "55555";
         request(app)
             .post(RouteNames.AddLesson)
-            .send(config.Course)
+            .send(lesson)
             .set("Accept", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
@@ -48,7 +50,7 @@ describe('Lessons Tests', () => {
                     return err;
                 }
                 //console.log(response.body);
-                expect(response.statusCode).to.equal(202);
+                expect(response.statusCode).to.equal(422);
                 done();
             });
     });

@@ -36,16 +36,8 @@
         }
     },
     "lesson": {
-        "lesson": {
-            "title": "hi",
-            "body": "hello NIGGA",
-            "Course": "5e236931e139de1d19850a7c"
-
-        },
-        "course": {
-            "title": "NODE",
-            "description": "First course will be about nds.adas/code JS"
-        }
+        "title": "hi",
+        "body": "hello NIGGA",
+        "CourseID": "5e29fb93b5bc413a63338b15"
     }
-
 }

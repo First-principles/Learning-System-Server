@@ -5,7 +5,6 @@ var Course = mongoose.model('Course');
 
 const addlesson = (req, res, next) => {
     const LessonInfo = req.body.lesson;
-    const CourseInfo = req.body.course;
 
     Course.findById(LessonInfo.CourseID)
         .then(course => {
@@ -18,7 +17,6 @@ const addlesson = (req, res, next) => {
             lesson.save().then(() => {
                 res.status(202).send({ lesson });
             }).catch(next);
-
         }).catch(() => {
             res.status(422).send({ errors: { message: "Course not found" } });
         });
