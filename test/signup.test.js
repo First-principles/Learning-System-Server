@@ -43,7 +43,7 @@ describe('Registeration Tests', () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
+                };
                 expect(response.statusCode).to.equal(422);
                 done();
             });
