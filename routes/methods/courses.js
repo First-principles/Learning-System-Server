@@ -17,5 +17,8 @@ const AddCourse = (req, res, next) => {
     }).catch(next);
 };
 
+const RemoveCourse = (req, res, next) => {
 
-module.exports = AddCourse;
+};
+
+module.exports = { AddCourse, RemoveCourse };

@@ -30,6 +30,13 @@
             "password": "hei",
             "email": "hi@gmail.com"
         }
+    },
+    "AuthToken": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjQyZTE1YWFlODc5MzQ5NmIyMDA0YSIsInVzZXJuYW1lIjoiaGloZWxsbyIsImV4cCI6MTU4NDYzNzMwNCwiaWF0IjoxNTc5NDUzMzA0fQ.9ZBLqzAJnlDKRU9mAk-Zxbu9g4PX9NxNztHDJEOKDk0",
+    "Course": {
+        "course": {
+            "title": "NODE",
+            "description": "First course will be about nds.adas/code JS"
+        }
     }
 
 
