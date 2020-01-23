@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../server/server");
 const { RouteNames } = require("../constants/constants");
 var expect = require('chai').expect;
-const config = require("../config/config");
+const config = require("../config/constants");
 
 //NOTE specs with no expectations within just pass.
 

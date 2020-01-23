@@ -1,46 +1,5 @@
 {
     "PORT": 5000,
     "LocalDB": "mongodb://localhost/WebCommunity",
-    "secret": "It is Ibrahim",
-    "ValidUser": {
-        "user": {
-            "password": "hi3",
-            "username": "TheTechLead",
-            "last_name": "Ibrahim",
-            "first_name": "Shamma",
-            "email": "i.abushammah@gmail.com"
-        }
-    },
-    "NotValidUser": {
-        "user": {
-            "username": "HI__HELLO",
-            "last_name": "hi_",
-            "first_name": "_hi",
-            "email": "hiHELLO@gmail.com"
-        }
-    },
-    "ValidLoginUser": {
-        "user": {
-            "password": "hi",
-            "email": "hi@gmail.com"
-        }
-    },
-    "BadLoginUser": {
-        "user": {
-            "password": "hei",
-            "email": "hi@gmail.com"
-        }
-    },
-    "AuthToken": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjQyZTE1YWFlODc5MzQ5NmIyMDA0YSIsInVzZXJuYW1lIjoiaGloZWxsbyIsImV4cCI6MTU4NDYzNzMwNCwiaWF0IjoxNTc5NDUzMzA0fQ.9ZBLqzAJnlDKRU9mAk-Zxbu9g4PX9NxNztHDJEOKDk0",
-    "Course": {
-        "course": {
-            "title": "NODE",
-            "description": "First course will be about nds.adas/code JS"
-        }
-    }
-
-
-
-
-
+    "secret": "It is Ibrahim"
 }
