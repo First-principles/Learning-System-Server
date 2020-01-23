@@ -50,5 +50,22 @@ describe('Registeration Tests', () => {
 
 
     });
+<<<<<<< HEAD
+=======
+    it("Registeration with already exists", function(done) {
+        request(app)
+            .post(RouteNames.AddUser)
+            .send(config.ValidLoginUser)
+            .end(function(err, response) {
+                if (err) {
+                    return err;
+                };
+                expect(response.statusCode).to.equal(422);
+                done();
+            });
+    });
+
+
+>>>>>>> master
 
 });

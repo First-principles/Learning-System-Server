@@ -18,7 +18,14 @@ const AddCourse = (req, res, next) => {
 };
 
 const RemoveCourse = (req, res, next) => {
+<<<<<<< HEAD
 
 };
 
+=======
+    Course.deleteOne(course);
+};
+
+
+>>>>>>> master
 module.exports = { AddCourse, RemoveCourse };
