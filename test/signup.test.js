@@ -50,8 +50,6 @@ describe('Registeration Tests', () => {
 
 
     });
-<<<<<<< HEAD
-=======
     it("Registeration with already exists", function(done) {
         request(app)
             .post(RouteNames.AddUser)
@@ -64,8 +62,4 @@ describe('Registeration Tests', () => {
                 done();
             });
     });
-
-
->>>>>>> master
-
 });
