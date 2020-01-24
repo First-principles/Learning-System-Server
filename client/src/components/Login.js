@@ -8,15 +8,15 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED
 } from '../constants/actionTypes';
-import {email , password} from '../constants/keys';
+import {email as emailKey , password as passwordKey} from '../constants/keys';
 import Footer from './Footer/Footer';
-const mapStateToProps = state => ({ ...state.auth });
 
+const mapStateToProps = state => ({ ...state.auth });
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: email, value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: emailKey, value }),
   onChangePassword: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: password, value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: passwordKey, value }),
   onSubmit: (email, password) =>
     dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
   onUnload: () =>
