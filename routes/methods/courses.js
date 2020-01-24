@@ -18,8 +18,15 @@ const AddCourse = (req, res, next) => {
     }).catch(next);
 };
 
-const RemoveCourse = (req, res, next) => {
-
+const RemoveCourse = async(req, res, next) => {
+    const courseInfo = req.body.course;
+    if (!courseInfo) {
+        return res.status(422).send({ errors: { message: "Course not found" } });
+    }
+    Course.deleteOne(courseInfo)
+        .then(() => {
+            return res.status(204).send(req);
+        }).catch(next);
 };
 
 module.exports = { AddCourse, RemoveCourse };
