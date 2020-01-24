@@ -40,6 +40,11 @@
             "title": "hi",
             "body": "hello NIGGA",
             "CourseID": "5e29fb93b5bc413a63338b15"
+        },
+        "course": {
+            "title": "NODE",
+            "description": "First course will be about nds.adas/code JS"
         }
+
     }
 }

@@ -26,6 +26,7 @@ describe('Lessons Tests', () => {
             .post(RouteNames.AddLesson)
             .send(config.lesson)
             .set("Content-Type", "application/json")
+            .set("Accept", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
                 if (err) {
@@ -44,6 +45,7 @@ describe('Lessons Tests', () => {
             .post(RouteNames.AddLesson)
             .send(lesson)
             .set("Content-Type", "application/json")
+            .set("Accept", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
                 if (err) {
