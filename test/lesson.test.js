@@ -40,7 +40,7 @@ describe('Lessons Tests', () => {
 
     it("Create Lesson for non-existing Course", (done) => {
         const lesson = config.lesson;
-        lesson.CourseID = "55555";
+        lesson.course = "";
         request(app)
             .post(RouteNames.AddLesson)
             .send(lesson)

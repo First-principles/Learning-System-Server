@@ -5,6 +5,12 @@ var Course = mongoose.model('Course');
 const addlesson = (req, res, next) => {
     const LessonInfo = req.body.lesson;
     const CourseInfo = req.body.course;
+    if (!CourseInfo) {
+        return res.status(422).send({ errors: { message: "Course not found" } });
+    }
+    if (!LessonInfo) {
+        return res.status(422).send({ errors: { message: "Lesson not found" } });
+    }
     Course.findOne(CourseInfo)
         .then(course => {
             // if (!course) {
