@@ -1,9 +1,11 @@
 const RouteNames = {
     base: "/",
-    AddLesson: "/lesson",
+    AddLesson: "/lessons",
     AddUser: "/register",
     Login: "/login",
-    AddCourse: "/course"
+    AddCourse: "/courses",
+    AddComment: "/comments",
+    user: "/users/:user"
 };
 
 module.exports = { RouteNames };
