@@ -1,6 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ListErrors from './ListErrors';
-import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import {
@@ -8,14 +8,15 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED
 } from '../constants/actionTypes';
-
+import {email , password} from '../constants/keys';
+import Footer from './Footer/Footer';
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: 'email', value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: email, value }),
   onChangePassword: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: password, value }),
   onSubmit: (email, password) =>
     dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
   onUnload: () =>
@@ -82,11 +83,10 @@ class Login extends React.Component {
                     disabled={this.props.inProgress}>
                     Sign in
                   </button>
-
                 </fieldset>
               </form>
+              <Footer/>
             </div>
-
           </div>
         </div>
       </div>

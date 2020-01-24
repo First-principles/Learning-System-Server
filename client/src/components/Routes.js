@@ -8,18 +8,18 @@ import Profile from '../components/Profile';
 import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
-
+import * as path from '../constants/Routes';
 const routes = (props) => (
     <Switch>
-    <Route exact path="/" component={Home}/>
-    <Route path="/login" component={Login} />
-    <Route path="/register" component={Register} />
-    <Route path="/editor/:slug" component={Editor} />
-    <Route path="/editor" component={Editor} />
-    <Route path="/article/:id" component={Article} />
-    <Route path="/settings" component={Settings} />
-    <Route path="/@:username/favorites" component={ProfileFavorites} />
-    <Route path="/@:username" component={Profile} />
+    <Route exact path={path.base} component={Home}/>
+    <Route path={path.login} component={Login} />
+    <Route path={path.register} component={Register} />
+    <Route path={path.slug} component={Editor} />
+    <Route path={path.editor} component={Editor} />
+    <Route path={path.article} component={Article} />
+    <Route path={path.settings} component={Settings} />
+    <Route path={path.favorite} component={ProfileFavorites} />
+    <Route path={path.user} component={Profile} />
     </Switch>
 );
 

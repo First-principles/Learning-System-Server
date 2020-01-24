@@ -1,0 +1,9 @@
+export const base = "/";
+export const login = "/login";
+export const register = "/register";
+export const slug = "/editor/:slug";
+export const editor = "/editor";
+export const article = "/article/:id";
+export const settings = "/settings";
+export const favorite = "/@:username/favorites";
+export const user = "/@:username";
