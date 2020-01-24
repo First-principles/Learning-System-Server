@@ -10,7 +10,7 @@ describe('Lessons Tests', () => {
         request(app)
             .post(RouteNames.AddLesson)
             .send(config.lesson)
-            .set("Accept", "application/json")
+            .set("Content-Type", "application/json")
             .end(function(err, response) {
                 if (err) {
                     return err;
@@ -25,13 +25,13 @@ describe('Lessons Tests', () => {
         request(app)
             .post(RouteNames.AddLesson)
             .send(config.lesson)
-            .set("Accept", "application/json")
+            .set("Content-Type", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
                 if (err) {
                     return err;
                 }
-                //console.log(response.body);
+                console.log(response.body);
                 expect(response.statusCode).to.equal(202);
                 done();
             });
@@ -43,7 +43,7 @@ describe('Lessons Tests', () => {
         request(app)
             .post(RouteNames.AddLesson)
             .send(lesson)
-            .set("Accept", "application/json")
+            .set("Content-Type", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
                 if (err) {

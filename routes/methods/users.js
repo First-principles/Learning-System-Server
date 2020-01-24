@@ -40,7 +40,6 @@ const login = async(req, res, next) => {
     };
     var user = await User.findOne({ email: UserInfo.email }).then(
         user => {
-            console.log(user);
             if (user.validPassword(UserInfo.password)) {
                 return res.status(202).json(
                     user.toAuthJSON()
@@ -49,7 +48,12 @@ const login = async(req, res, next) => {
                 return res.status(422).send({ errors: { authentication: "authentication error" } })
             }
         }
-    ).catch(next);
+    ).catch(
+        () => {
+            return res.status(422)
+                .send({ errors: { authentication: "Email not valid" } })
+        }
+    );
 };
 
 

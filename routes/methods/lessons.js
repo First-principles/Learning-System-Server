@@ -8,18 +8,16 @@ const addlesson = (req, res, next) => {
 
     Course.findById(LessonInfo.CourseID)
         .then(course => {
-            if (!course) {
-                res.status(422).send({ errors: { message: "Course not found" } });
-            }
+            // if (!course) {
+            //     res.status(422).send({ errors: { message: "Course not found" } });
+            // }
             const lesson = new Lesson(LessonInfo);
 
             course.lessons.push(lesson);
             lesson.save().then(() => {
                 res.status(202).send({ lesson });
             }).catch(next);
-        }).catch(() => {
-            res.status(422).send({ errors: { message: "Course not found" } });
-        });
+        }).catch(next);
 };
 
 module.exports = addlesson;
