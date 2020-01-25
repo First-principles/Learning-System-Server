@@ -1,8 +1,14 @@
-const Course = function(req, res, next, slug) {
-    Course.findOne({ slug: slug })
+var mongoose = require('mongoose');
+var User = mongoose.model("User");
+var Comment = mongoose.model("Comment");
+var Lesson = mongoose.model("Lesson");
+var Course = mongoose.model("Course");
+
+const course = function(req, res, next, slug) {
+    const courseInfo = req.body.course;
+    Course.findOne(courseInfo)
         .populate('author')
         .then(function(course) {
-            //NOTE in case article not found
             if (!course) {
                 return res.sendStatus(404);
             }
@@ -21,4 +27,10 @@ const comment = (req, res, next, id) => {
     }).catch(ncommentext);
 };
 
-module.exports = { article, comment };
+const params = {
+    course: 'course',
+    comment: 'comment'
+};
+
+
+module.exports = { course, comment, params };

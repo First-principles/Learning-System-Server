@@ -10,5 +10,4 @@ var CourseSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, { timestamps: true });
 
-
 mongoose.model('Course', CourseSchema);
