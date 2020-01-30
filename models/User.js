@@ -32,13 +32,14 @@ var UserSchema = new mongoose.Schema({
     },
     contacts: [],
     bio: String,
-    avtar: String,
+    avatar: String,
     favorite_Lessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
     favorite_Courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
     favorite_Comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     hash: String,
     salt: String,
+    interests:[{required:false}]
 }, { timestamps: true });
 
 UserSchema.methods.setPassword = function(password) {
