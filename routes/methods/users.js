@@ -57,38 +57,41 @@ const login = async(req, res, next) => {
 };
 
 const updateUser = (req ,res, next)=>{
-        User.findById(req.payload.id).then(function(user) {
-    
+        const updateData = req.body.update;
+        if (!updateData){
+            res.status(422).send({"message":"please provide what you want to update"})
+        }
+        User.findOne({email:req.body.user.email}).then(function(user) {
             if (!user) { return res.sendStatus(401); }
-    
+
             //NOTE  only update fields that were actually passed...
-            if (typeof req.body.user.username !== 'undefined') {
-                user.username = req.body.user.username;
+            if (typeof updateData.username !== 'undefined') {
+                user.username = updateData.username;
             }
-            if (typeof req.body.user.email !== 'undefined') {
-                user.email = req.body.user.email;
+            if (typeof updateData.email !== 'undefined') {
+                user.email = updateData.email;
             }
-            if (typeof req.body.user.first_name !== 'undefined') {
-                user.email = req.body.user.email;
+            if (typeof updateData.first_name !== 'undefined') {
+                user.first_name = updateData.first_name;
             }
-            if (typeof req.body.user.last_name !== 'undefined') {
-                user.email = req.body.user.email;
+            if (typeof updateData.last_name !== 'undefined') {
+                user.last_name = updateData.last_name;
             }
-            if (typeof req.body.user.bio !== 'undefined') {
-                user.bio = req.body.user.bio;
+            if (typeof updateData.bio !== 'undefined') {
+                user.bio = updateData.bio;
             }
-            if (typeof req.body.user.image !== 'undefined') {
-                user.image = req.body.user.image;
+            if (typeof updateData.avatar !== 'undefined') {
+                user.avatar = updateData.avatar;
             }
-            if (typeof req.body.user.password !== 'undefined') {
-                user.setPassword(req.body.user.password);
+            if (typeof updateData.password !== 'undefined') {
+                user.setPassword(updateData.password);
             }
-    
-            return user.save().then(function() {
-                return res.json({ user: user.toAuthJSON() });
-            });
+            return user.save()
+                .then(function() {
+                    return res.json({ user: user.toAuthJSON() });
+                });
         }).catch(()=>{
-            res.status(402).send({"message":"couldn't update user"})
+            res.status(422).send({"message":"couldn't update user"})
         }
         );
     };
