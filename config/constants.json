@@ -46,5 +46,16 @@
             "title": "NODE",
             "description": "First course will be about nds.adas/code JS"
         }
-    }
+    },
+    "CrsDel":{
+            "course":{
+                "id" : "5e33ee5c799308594e70",
+                "favoritesCount" : 0,
+                "lessons" : [],
+                "comments" : [],
+                "title" : "NODE"
+                }        
+        }  
+    
+
 }

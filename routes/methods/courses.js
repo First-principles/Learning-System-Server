@@ -18,15 +18,22 @@ const AddCourse = (req, res, next) => {
     }).catch(next);
 };
 
-const RemoveCourse = async(req, res, next) => {
+    const RemoveCourse = async(req, res, next) => {
     const courseInfo = req.body.course;
     if (!courseInfo) {
-        return res.status(422).send({ errors: { message: "Course not found" } });
+        res.status(422).send({ errors: { message: "Course not found" } });
     }
-    Course.deleteOne(courseInfo)
-        .then(() => {
-            return res.status(204).send(req);
-        }).catch(next);
+
+    Course.deleteOne({"_id": courseInfo.id})
+        .then((course) => {
+            if (!course){        
+                res.status(422).send({ errors: { message: "Course is not found" } });
+            }
+            res.status(202).send({message: "Course has been deleted !" });
+        })
+        .catch(
+            res.status(422).send({ errors: { message: "Course is not found" } })
+            );
 };
 
 module.exports = { AddCourse, RemoveCourse };
