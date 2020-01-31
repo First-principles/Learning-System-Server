@@ -3,6 +3,14 @@ const app = require("../server/server");
 const { RouteNames } = require("../constants/constants");
 var expect = require('chai').expect;
 const config = require("../config/constants");
+const fs=require('fs');
+const path=require('path');
+
+
+const constants_path= path.join(__dirname,'../config/constants.json')
+var constants=fs.readFileSync(constants_path).toString();
+constants=JSON.parse(constants)
+
 
 describe("Login Tests", () => {
 
@@ -17,6 +25,9 @@ describe("Login Tests", () => {
                     return err;
                 }
                 //console.log(response.body);
+                constants.AuthToken='Token '+response.body.token;
+                const constants_JSON=JSON.stringify(constants)
+                fs.writeFileSync(constants_path,constants_JSON);
                 expect(response.statusCode).to.equal(202);
                 done();
             });
