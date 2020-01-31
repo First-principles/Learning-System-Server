@@ -57,11 +57,11 @@ const login = async(req, res, next) => {
 };
 
 const updateUser = (req ,res, next)=>{
-        const updateData = req.body.update;
+        const updateData = req.body.user;
         if (!updateData){
             res.status(422).send({"message":"please provide what you want to update"})
         }
-        User.findOne({email:req.body.user.email}).then(function(user) {
+        User.findById(req.body.user._id).then(function(user) {
             if (!user) { return res.sendStatus(401); }
 
             //NOTE  only update fields that were actually passed...

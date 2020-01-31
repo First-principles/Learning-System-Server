@@ -9,6 +9,7 @@ const RouteNames = {
     comment: "/courses/:course/lessons/:lesson/comments/:comment",
     user: "/users/:user",
     profile: "/users/:user/profile",
+    update:'/users/update' 
 };
 
 module.exports = { RouteNames };

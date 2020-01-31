@@ -14,6 +14,6 @@ router.post(RouteNames.AddUser, adduser);
 router.post(RouteNames.Login, login);
 
 //SECTION update user
-router.post('/users/update' , helper.required , updateUser);
+router.post(RouteNames.update , helper.required , updateUser);
 
 module.exports = router;
