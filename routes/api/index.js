@@ -1,7 +1,7 @@
 var router = require('express').Router();
 const { RouteNames } = require("../../constants/constants");
 
-router.use(RouteNames.base, require('./lessons'));
+// router.use(RouteNames.base, require('./lessons'));
 // router.use(RouteNames.base, require('./courses'));
 // router.use(RouteNames.base, require('../../User/api'));
 router.use(RouteNames.base, require('./comments'));

@@ -45,8 +45,7 @@ describe('Courses Tests', () => {
     //         .end(function(err, response) {
     //             if (err) {
     //                 return err;
-    //             }
-    //             //console.log(response.body);
+    //             };
     //             expect(response.statusCode).to.equal(401);
     //             done();
     //         });
@@ -61,11 +60,9 @@ describe('Courses Tests', () => {
     //         .end(function(err, response) {
     //             if (err) {
     //                 return err;
-    //             }
-    //             //console.log(response.body);
+    //             };
     //             expect(response.statusCode).to.equal(202);
     //             done();
     //         });
     // });
-
 });

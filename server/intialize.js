@@ -13,9 +13,9 @@ app.use(session({
     saveUninitialized: false
 }));
 //NOTE Import DB
-require('../models/Lesson');
+require('../models/Comment');
+require('../Lesson/schema');
 require('../Course/schema');
 require('../User/schema');
-require('../models/Comment');
 
 module.exports = app;
