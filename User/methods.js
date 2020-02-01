@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var passport = require("passport");
-
 
 const adduser = (req, res, next) => {
     var user = new User();

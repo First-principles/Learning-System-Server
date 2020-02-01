@@ -1,8 +1,8 @@
 const request = require("supertest");
-const app = require("../server/server");
-const { RouteNames } = require("../constants/constants");
+const app = require("../../server/server");
+const { RouteNames } = require("../../constants/constants");
 var expect = require('chai').expect;
-const config = require("../config/constants");
+const config = require("../../config/constants");
 
 describe("Login Tests", () => {
 

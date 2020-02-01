@@ -3,7 +3,7 @@ const { RouteNames } = require("../../constants/constants");
 var mongoose = require('mongoose');
 const addlesson = require('../methods/lessons');
 const helper = require("../../helper/helper");
-const { coursePopulation , params } = require('../populations/populations');
+const { coursePopulation , params } = require('../../User/populations');
 
 router.param(params.comment, coursePopulation);
 
