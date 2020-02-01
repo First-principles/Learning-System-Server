@@ -2,15 +2,11 @@ const app = require("./intialize");
 const mongoose = require("mongoose");
 const config = require('../config/config');
 var isProduction = process.env.NODE_ENV === 'production';
-
-//NOTE Import DB
-require('../models/Lesson');
-require('../models/Course');
-require('../User/schema');
-require('../models/Comment');
+var userComponent = require("../User/index");
 
 //NOTE Import API
 app.use(require('../routes'));
+app.use(userComponent);
 
 if (isProduction) {
     mongoose.connect(process.env.MONGODB_URI, {
