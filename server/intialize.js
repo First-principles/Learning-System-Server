@@ -12,8 +12,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-//NOTE Import DB
-require('../models/Comment');
+//NOTE Import DB Schemas
+require('../Comment/schema');
 require('../Lesson/schema');
 require('../Course/schema');
 require('../User/schema');
