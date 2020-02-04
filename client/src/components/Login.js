@@ -11,18 +11,6 @@ import {
 import {email as emailKey , password as passwordKey} from '../constants/keys';
 import Footer from './Footer/Footer';
 
-const mapStateToProps = state => ({ ...state.auth });
-const mapDispatchToProps = dispatch => ({
-  onChangeEmail: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: emailKey, value }),
-  onChangePassword: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: passwordKey, value }),
-  onSubmit: (email, password) =>
-    dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
-  onUnload: () =>
-    dispatch({ type: LOGIN_PAGE_UNLOADED })
-});
-
 class Login extends React.Component {
   constructor() {
     super();
@@ -93,5 +81,17 @@ class Login extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ ...state.auth });
+const mapDispatchToProps = dispatch => ({
+  onChangeEmail: value =>
+    dispatch({ type: UPDATE_FIELD_AUTH, key: emailKey, value }),
+  onChangePassword: value =>
+    dispatch({ type: UPDATE_FIELD_AUTH, key: passwordKey, value }),
+  onSubmit: (email, password) =>
+    dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
+  onUnload: () =>
+    dispatch({ type: LOGIN_PAGE_UNLOADED })
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

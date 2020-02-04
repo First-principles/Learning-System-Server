@@ -9,6 +9,7 @@ import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
 import * as path from '../constants/Routes';
+
 const routes = (props) => (
     <Switch>
     <Route exact path={path.base} component={Home}/>

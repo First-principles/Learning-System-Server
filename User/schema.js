@@ -14,12 +14,12 @@ var UserSchema = new mongoose.Schema({
     },
     first_name: {
         type: String,
-        required: [true, "can't be blank"],
+        // required: [true, "can't be blank"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     },
     last_name: {
         type: String,
-        required: [true, "can't be blank"],
+        // required: [true, "can't be blank"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     },
     email: {

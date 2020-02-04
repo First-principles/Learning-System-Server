@@ -7,20 +7,6 @@ import { store } from '../store';
 import { push } from 'react-router-redux';
 import Aux from './Hoc/Aux';
 import Routes from './Routes';
-const mapStateToProps = state => {
-  return {
-    appLoaded: state.common.appLoaded,
-    appName: state.common.appName,
-    currentUser: state.common.currentUser,
-    redirectTo: state.common.redirectTo
-  }};
-
-const mapDispatchToProps = dispatch => ({
-  onLoad: (payload, token) =>
-    dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
-  onRedirect: () =>
-    dispatch({ type: REDIRECT })
-});
 
 class App extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -64,5 +50,18 @@ class App extends React.Component {
 // App.contextTypes = {
 //   router: PropTypes.object.isRequired
 // };
+const mapStateToProps = state => {
+  return {
+    appLoaded: state.common.appLoaded,
+    appName: state.common.appName,
+    currentUser: state.common.currentUser,
+    redirectTo: state.common.redirectTo
+  }};
 
+const mapDispatchToProps = dispatch => ({
+  onLoad: (payload, token) =>
+    dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
+  onRedirect: () =>
+    dispatch({ type: REDIRECT })
+});
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -21,9 +21,10 @@ const adduser = (req, res, next) => {
             return res.status(422).send(err);
         }
         res.status(202).json({
+            user:{
             username: user.username,
             email: user.email,
-            token: user.token
+            token: user.token}
         });
     });
 };
