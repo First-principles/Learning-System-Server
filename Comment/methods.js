@@ -15,7 +15,7 @@ const AddComment = (req , res , next)=>{
     Lesson.findById(LessonInfo._id).then(
         (lesson)=> {
             comment = new Comment(CommentInfo)
-            if (!lesson){res.status(422).send({error:{message:"please provide a lesson"}})}
+            if (!lesson){return res.status(422).send({error:{message:"Lesson not found"}})}
             lesson.comments.push(comment);
             comment.lesson = LessonInfo;
             comment.save().then(

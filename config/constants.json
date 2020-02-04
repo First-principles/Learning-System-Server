@@ -54,8 +54,26 @@
                 "lessons" : [],
                 "comments" : [],
                 "title" : "NODE"
-                }        
-        }  
+                }  
+        },
+    "GoodComment":{
+        "lesson":{
+            "_id":"5e33118fb376a45489b42067",
+            "title":"hi"
+        },
+        "comment":{
+            "body":"NIGGGAA"
+        }
+    },
+    "BadComment":{
+        "lesson":{
+            "_id":"5e33118fb376a45489b42068",
+            "title":"hi"
+        },
+        "comment":{
+            "body":"NIGGGAA"
+        }
+    }
     
 
 }
