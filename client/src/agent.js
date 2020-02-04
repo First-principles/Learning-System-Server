@@ -23,7 +23,7 @@ const requests = {
     put: (url, body) =>
         superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
     post: (url, body) =>
-        superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
+        superagent.post(`${API_ROOT_local}${url}`, body).use(tokenPlugin).then(responseBody)
 };
 
 const Auth = {

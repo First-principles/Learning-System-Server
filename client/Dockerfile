@@ -11,7 +11,7 @@ RUN npm install
 # RUN npm ci --only=production
 # Bundle app source
 COPY . ./Client
-EXPOSE 5000
+EXPOSE 4100
 CMD [ "npm", "start" ]
 
 #nodemon server/app.js
