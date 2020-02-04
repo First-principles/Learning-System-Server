@@ -2,16 +2,32 @@ var mongoose = require('mongoose');
 var Course = mongoose.model('Course');
 var User = mongoose.model('User');
 var Comment = mongoose.model("Comment");
-
+var Lesson = mongoose.model("Lesson");
 const AddComment = (req , res , next)=>{
     const LessonInfo = req.body.lesson;
-    const CommentInfo = req.body.comment; 
+    const CommentInfo = req.body.comment;
     if (!CommentInfo){
         res.status(422).send({error:{message:"please provide a comment"}})
-    }
+    };
     if (!LessonInfo){
         res.status(422).send({error:{message:"please provide a lesson"}})
-    }
+    };
+    Lesson.findById(LessonInfo._id).then(
+        (lesson)=> {
+            comment = new Comment(CommentInfo)
+            if (!lesson){res.status(422).send({error:{message:"please provide a lesson"}})}
+            lesson.comments.push(comment);
+            comment.save().then(
+                ()=>{
+                    res.status(202).send({
+                        lesson:LessonInfo,
+                        comment
+                    })
+                }
+            ).catch(next);
+            lesson.save();
+        }
+    )
 
 };
 
