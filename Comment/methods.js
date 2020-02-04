@@ -17,6 +17,7 @@ const AddComment = (req , res , next)=>{
             comment = new Comment(CommentInfo)
             if (!lesson){res.status(422).send({error:{message:"please provide a lesson"}})}
             lesson.comments.push(comment);
+            comment.lesson = LessonInfo;
             comment.save().then(
                 ()=>{
                     res.status(202).send({
@@ -28,7 +29,6 @@ const AddComment = (req , res , next)=>{
             lesson.save();
         }
     )
-
 };
 
 
