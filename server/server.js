@@ -9,7 +9,6 @@ var courseComponent = require("../Course/index");
 var lessonComponent = require("../Lesson/index");
 var commentComponent = require("../Comment/index");
 //NOTE Import API
-app.use(require('../routes'));
 app.use(userComponent);
 app.use(courseComponent);
 app.use(lessonComponent);
