@@ -10,15 +10,6 @@ function getTokenFromHeader(req) {
     return null;
 }
 
-// function getTokenFromBody(req) {
-//     if (req.body.user.token) {
-
-//         return req.body.user.token;
-//     }
-//     return null;
-// }
-
-
 var auth = {
     required: jwt({
         secret: secret,

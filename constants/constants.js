@@ -2,7 +2,7 @@ const RouteNames = {
     base: "/",
     AddUser: "/register",
     Login: "/login",
-    AddLesson: "/courses/:course/lessons",
+    AddLesson: "/courses/lessons",
     AddCourse: "/courses",
     AddComment: "/courses/lessons/comments",
     lesson: "/courses/:course/lessons/:lesson",
