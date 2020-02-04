@@ -8,7 +8,7 @@ describe('Courses Tests', () => {
 
     it("Create Course while not autorized", (done) => {
         request(app)
-            .post(RouteNames.AddCourse)
+            .post(RouteNames.AddComment)
             .send(config.Course)
             .set("Accept", "application/json")
             .end(function(err, response) {
@@ -21,9 +21,9 @@ describe('Courses Tests', () => {
             });
     });
 
-    it("Create Course while autorized", (done) => {
+    it("Create Comment while autorized", (done) => {
         request(app)
-            .post(RouteNames.AddCourse)
+            .post(RouteNames.AddComment)
             .send(config.Course)
             .set("Accept", "application/json")
             .set('authorization', config.AuthToken)
@@ -36,33 +36,4 @@ describe('Courses Tests', () => {
                 done();
             });
     });
-
-    // it("Deleting Course while not autorized", (done) => {
-    //     request(app)
-    //         .delete(RouteNames.AddCourse)
-    //         .send(config.CrsDel)
-    //         .set("Accept", "application/json")
-    //         .end(function(err, response) {
-    //             if (err) {
-    //                 return err;
-    //             };
-    //             expect(response.statusCode).to.equal(401);
-    //             done();
-    //         });
-    // });
-
-    // it("Deleting Course while being autorized", (done) => {
-    //     request(app)
-    //         .delete(RouteNames.AddCourse)
-    //         .send(config.CrsDel)
-    //         .set("Accept", "application/json")
-    //         .set('authorization', config.AuthToken)
-    //         .end(function(err, response) {
-    //             if (err) {
-    //                 return err;
-    //             };
-    //             expect(response.statusCode).to.equal(202);
-    //             done();
-    //         });
-    // });
 });
