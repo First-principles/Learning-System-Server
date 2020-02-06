@@ -1,4 +1,5 @@
-Test 
-Schema 
-API 
-index
+REVIEW Musts for Backend 
+1-Restructure constants
+2-Helper auth based on User not just tokens
+
+
