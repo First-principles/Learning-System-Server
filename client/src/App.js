@@ -1,14 +1,10 @@
 import React from 'react';
 import './App.css';
-
+import Course from './Course';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello World</p>
-      </header>
-    </div>
-  );
+      <Course/>
+);
 }
 
 export default App;
