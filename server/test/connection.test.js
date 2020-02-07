@@ -2,16 +2,6 @@ const mongoose = require('mongoose')
 const LocalDB = require('../../config/config').LocalDB;
 const {MongoClient} = require('mongodb');
 
-// beforeAll(async () => {
-//   const url = LocalDB
-//   await mongoose.connect(url, 
-//     {   useUnifiedTopology: true,
-//         useNewUrlParser: true,
-//         useCreateIndex: true,
-// })
-// })
-
-
 describe('insert', () => {
   let connection;
   let db;
