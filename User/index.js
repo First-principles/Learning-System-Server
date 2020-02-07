@@ -1,7 +1,7 @@
 var router = require('express').Router();
-const { RouteNames } = require("../constants/constants");
+const Routes = require("./constants");
 
-router.use(RouteNames.base, require('./api'));
+router.use(Routes.base, require('./api'));
 
 router.use(function(err, req, res, next) {
     if (err.name === 'ValidationError') {
