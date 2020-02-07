@@ -3,6 +3,11 @@ const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
+/**
+ * @courses => The courses made by user
+ * @comments => The comments made by user
+ * 
+ */
 var UserSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -36,6 +41,12 @@ var UserSchema = new mongoose.Schema({
     favorite_Lessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
     favorite_Courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
     favorite_Comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    Recieved_favorite_Lessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
+    Recieved_favorite_Courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+    Recieved_favorite_Comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    courses:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+    lessons:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
+    comments:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     hash: String,
     salt: String,

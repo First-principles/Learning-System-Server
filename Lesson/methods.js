@@ -18,6 +18,7 @@ const addlesson = (req, res, next) => {
             // }
             const lesson = new Lesson(LessonInfo);
             course.lessons.push(lesson);
+            course.save();
             lesson.save().then(() => {
                 res.status(202).send({ lesson });
             }).catch(next);

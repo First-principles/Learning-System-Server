@@ -34,6 +34,11 @@
         "course": {
             "title": "NODE",
             "description": "First course will be about nds.adas/code JS"
+        },
+        "user": {
+            "_id":"5e33d05e2b8bd020b86ca9e4",
+            "password": "hi",
+            "email": "hi@gmail.com"
         }
     },
     "lesson": {
@@ -45,7 +50,13 @@
         "course": {
             "title": "NODE",
             "description": "First course will be about nds.adas/code JS"
+        },
+        "user": {
+            "_id":"5e33d05e2b8bd020b86ca9e4",
+            "password": "hi",
+            "email": "hi@gmail.com"
         }
+
     },
     "CrsDel":{
             "course":{
@@ -54,7 +65,7 @@
                 "lessons" : [],
                 "comments" : [],
                 "title" : "NODE"
-                }  
+                }
         },
     "GoodComment":{
         "lesson":{
@@ -63,6 +74,11 @@
         },
         "comment":{
             "body":"NIGGGAA"
+        },
+        "user": {
+            "_id":"5e33d05e2b8bd020b86ca9e4",
+            "password": "hi",
+            "email": "hi@gmail.com"
         }
     },
     "BadComment":{
@@ -72,6 +88,11 @@
         },
         "comment":{
             "body":"NIGGGAA"
+        },
+        "user": {
+            "_id":"5e33d05e2b8bd020b86ca9e4",
+            "password": "hi",
+            "email": "hi@gmail.com"
         }
     }
     
