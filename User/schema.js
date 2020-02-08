@@ -48,6 +48,7 @@ var UserSchema = new mongoose.Schema({
     lessons:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
     comments:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    followedBy:[{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     hash: String,
     salt: String,
     interests:[{required:false}]
@@ -76,7 +77,17 @@ UserSchema.methods.toAuthJSON = function() {
         token: this.generateJWT(),
         bio: this.bio,
         avatar: this.image,
-        _id:this._id
+        _id:this._id,
+        courses:this.courses,
+        comments:this.comments,
+        lessons:this.lessons,
+        favorite_Lessons:this.favorite_Lessons,
+        favorite_Comments:this.favorite_Comments,
+        favorite_Courses:this.favorite_Courses,
+        Recieved_favorite_Comments:this.Recieved_favorite_Comments,
+        Recieved_favorite_Courses:this.Recieved_favorite_Courses,
+        Recieved_favorite_Lessons:this.Recieved_favorite_Lessons,
+        interests:this.interests
     };
 };
 

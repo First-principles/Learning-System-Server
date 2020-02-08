@@ -95,5 +95,27 @@ const updateUser = (req ,res, next)=>{
         }
         );
     };
+const followUser = (req,res,next)=>{
+    const userInfo = req.body.user;
+    const followedInfo = req.body.followed;
+    if (!userInfo){res.status(422).send({"message":"User not provided"})};
+    if (!followedInfo){res.status(422).send({"message":"Followed not provided"})};
+    User.findById(userInfo._id).then((user)=>{
+        User.findById(followedInfo._id).then((followed)=>{
+            if (!user){res.status(422).send({"message":"User not found"})}
+            if (!followed){res.status(422).send({"message":"followed not found"})}
 
-module.exports = { adduser, login  , updateUser};
+
+            user.following.push(followed);
+            followed.followedBy.push(user);
+            user.save();
+            followed.save();
+            
+            return res.status(202).json(
+                user.toAuthJSON()
+            )
+        }).catch(next)
+    }).catch(next)
+}
+
+module.exports = { adduser, login  , updateUser , followUser};
