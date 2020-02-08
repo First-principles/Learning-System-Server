@@ -50,7 +50,7 @@ describe("Follow Tests", () => {
                         return err;
                     }
                     //console.log("Response Body:", response);
-                    expect(response.statusCode).to.equal(422);
+                    expect(response.statusCode).to.equal(401);
                     done();
                 });
         });
@@ -60,13 +60,12 @@ describe("Follow Tests", () => {
                 .post(Routes.follow)
                 .send(config.FineFollow)
                 .set("Accept", "application/json")
-                .set('authorization', config.AuthToken)
                 .end(function(err, response) {
                     if (err) {
                         return err;
                     }
                     //console.log("Response Body:", response);
-                    expect(response.statusCode).to.equal(422);
+                    expect(response.statusCode).to.equal(401);
                     done();
                 });
         });
