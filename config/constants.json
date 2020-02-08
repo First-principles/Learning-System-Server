@@ -44,8 +44,7 @@
     "lesson": {
         "lesson": {
             "title": "hi",
-            "body": "hello NIGGA",
-            "CourseID": "5e29fb93b5bc413a63338b15"
+            "body": "hello NIGGA"
         },
         "course": {
             "title": "NODE",
@@ -65,6 +64,11 @@
                 "lessons" : [],
                 "comments" : [],
                 "title" : "NODE"
+                },
+                "user": {
+                    "_id":"5e33d05e2b8bd020b86ca9e4",
+                    "password": "hi",
+                    "email": "hi@gmail.com"
                 }
         },
     "GoodComment":{

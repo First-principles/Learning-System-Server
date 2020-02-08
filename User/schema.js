@@ -76,7 +76,7 @@ UserSchema.methods.toAuthJSON = function() {
         token: this.generateJWT(),
         bio: this.bio,
         avatar: this.image,
-        id:this._id
+        _id:this._id
     };
 };
 
