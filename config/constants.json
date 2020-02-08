@@ -98,7 +98,31 @@
             "password": "hi",
             "email": "hi@gmail.com"
         }
+    },
+    "FineFollow":{   
+        "user":{ 
+        "username": "hi",
+        "email": "hi@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMzNkMDVlMmI4YmQwMjBiODZjYTllNCIsInVzZXJuYW1lIjoiaGkiLCJleHAiOjE1ODYzNDg1OTcsImlhdCI6MTU4MTE2ODE5N30.Q5Bp59qABVs5OwzsmrQmFe1doV9uDnNILxPYPK5Iqss",
+        "_id": "5e33d05e2b8bd020b86ca9e4"
+        },
+        "followed": {
+            "username": "HIHELLO",
+            "last_name": "hi",
+            "first_name": "hi",
+            "email": "hi@gmail.com",
+            "_id": "5e33d05e2b8bd020b86ca9e4"
+        }
+    },
+    "BadFollow":{   
+        "user":{ 
+        "username": "hi",
+        "email": "hi@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMzNkMDVlMmI4YmQwMjBiODZjYTllNCIsInVzZXJuYW1lIjoiaGkiLCJleHAiOjE1ODYzNDg1OTcsImlhdCI6MTU4MTE2ODE5N30.Q5Bp59qABVs5OwzsmrQmFe1doV9uDnNILxPYPK5Iqss",
+        "_id": "5e33d05e2b8bd020b86ca9e4"
+        }
     }
+
     
 
 }

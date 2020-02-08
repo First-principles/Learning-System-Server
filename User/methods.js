@@ -104,8 +104,7 @@ const followUser = (req,res,next)=>{
         User.findById(followedInfo._id).then((followed)=>{
             if (!user){res.status(422).send({"message":"User not found"})}
             if (!followed){res.status(422).send({"message":"followed not found"})}
-
-
+            
             user.following.push(followed);
             followed.followedBy.push(user);
             user.save();
