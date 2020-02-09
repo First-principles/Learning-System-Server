@@ -49,6 +49,7 @@ var UserSchema = new mongoose.Schema({
     comments:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     followedBy:[{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    articles:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
     hash: String,
     salt: String,
     interests:[{required:false}]

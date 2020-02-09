@@ -130,7 +130,22 @@
             "email": "hi@gmail.com",
             "_id": "5e33d05e2b8bd020b86ca9e4"
         }
-    }
+    },
+    "GoodArticle":{
+        "user": {
+            "_id": "5e33d05e2b8bd020b86ca9e4"
+        },
+        "article":{
+        	"title":"how to be a nice programming",
+        	"body":"YOU SHOULD NEVER!"
+        }
+    },
+        "BadArticle":{
+            "article":{
+                "title":"how to be a nice programming",
+                "body":"YOU SHOULD NEVER!"
+            }
+ }
 
 
     

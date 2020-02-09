@@ -17,5 +17,6 @@ require('../Comment/schema');
 require('../Lesson/schema');
 require('../Course/schema');
 require('../User/schema');
+require('../Article/schema');
 
 module.exports = app;
