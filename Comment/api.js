@@ -1,9 +1,11 @@
 var router = require('express').Router();
-const { RouteNames } = require("../constants/constants");
+const  Route = require("./constants");
 const auth = require("../helper/helper");
-const { AddComment } = require("./methods");
+const { AddLessonComment , AddArtcileComment } = require("./methods");
 
-router.post(RouteNames.AddComment, auth.required, AddComment);
+router.post(Route.AddComment2Lesson, auth.required, AddLessonComment);
 
+router.post(Route.AddComment2Lesson, auth.required, AddArtcileComment);
+ 
 
 module.exports = router;

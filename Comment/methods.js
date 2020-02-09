@@ -3,7 +3,9 @@ var Course = mongoose.model('Course');
 var User = mongoose.model('User');
 var Comment = mongoose.model("Comment");
 var Lesson = mongoose.model("Lesson");
-const AddComment = (req , res , next)=>{
+var Article = mongoose.model("Article");
+
+const AddLessonComment = (req , res , next)=>{
     const LessonInfo = req.body.lesson;
     const CommentInfo = req.body.comment;
     if (!CommentInfo){
@@ -31,5 +33,32 @@ const AddComment = (req , res , next)=>{
     )
 };
 
+const AddArtcileComment = (req , res , next)=>{
+    const ArticleInfo = req.body.article;
+    const CommentInfo = req.body.comment;
+    if (!CommentInfo){
+        res.status(422).send({error:{message:"please provide a comment"}})
+    };
+    if (!ArticleInfo){
+        res.status(422).send({error:{message:"please provide a Article"}})
+    };
+    Article.findById(ArticleInfo._id).then(
+        (article)=> {
+            if (!article){return res.status(422).send({error:{message:"Lesson not found"}})}
+            comment = new Comment(CommentInfo);
+            article.comments.push(comment);
+            article.save();
+            comment.article = ArticleInfo;
+            comment.save().then(
+                ()=>{
+                    res.status(202).send({
+                        article:ArticleInfo,
+                        comment
+                    })
+                }
+            ).catch(next);
+        }
+    )
+}
 
-module.exports = { AddComment };
+module.exports = { AddLessonComment ,AddArtcileComment };
