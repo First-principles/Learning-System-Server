@@ -68,6 +68,22 @@ describe("Follow Tests", () => {
                     expect(response.statusCode).to.equal(401);
                     done();
                 });
+            });
+                    //SECTION login with not valid user 
+        it("fine follow while authorized , User doesn't exist", function(done) {
+            request(app)
+                .post(Routes.follow)
+                .send(config.MissingFollow)
+                .set("Accept", "application/json")
+                .end(function(err, response) {
+                    if (err) {
+                        return err;
+                    }
+                    //console.log("Response Body:", response);
+                    expect(response.statusCode).to.equal(401);
+                    done();
+                });
+
         });
     
 });
