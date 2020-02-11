@@ -11,12 +11,10 @@ describe("Login Tests", () => {
         request(app)
             .post(RouteNames.Login)
             .send(config.ValidLoginUser)
-            //.set("Accept", "application/json")
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log(response.body);
+                };
                 expect(response.statusCode).to.equal(202);
                 done();
             });
@@ -30,11 +28,9 @@ describe("Login Tests", () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log("Response Body:", response);
+                };
                 expect(response.statusCode).to.equal(422);
                 done();
             });
     });
-
 });
