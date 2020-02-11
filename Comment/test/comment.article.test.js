@@ -14,8 +14,7 @@ describe('Comment Tests on Articles', () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log(response.body);
+                };
                 expect(response.statusCode).to.equal(401);
                 done();
             });
@@ -29,8 +28,7 @@ describe('Comment Tests on Articles', () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log(response.body);
+                };
                 expect(response.statusCode).to.equal(401);
                 done();
             });
@@ -44,8 +42,7 @@ describe('Comment Tests on Articles', () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log(response.body);
+                };
                 expect(response.statusCode).to.equal(422);
                 done();
             });

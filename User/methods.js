@@ -4,7 +4,6 @@ var User = mongoose.model('User');
 const adduser = (req, res, next) => {
     var user = new User();
     const UserInfo = req.body.user;
-    console.log(req.body);
     try {
         user.username = UserInfo.username;
         user.first_name = UserInfo.first_name;

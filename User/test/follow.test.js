@@ -17,7 +17,6 @@ describe("Follow Tests", () => {
                 if (err) {
                     return err;
                 }
-                //console.log(response.body);
                 expect(response.statusCode).to.equal(202);
                 done();
             });
@@ -32,15 +31,14 @@ describe("Follow Tests", () => {
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
-                //console.log("Response Body:", response);
+                };
                 expect(response.statusCode).to.equal(422);
                 done();
             });
     });
 
-        //SECTION login with not valid user 
-        it("Bad follow while unauthorized", function(done) {
+    //SECTION login with not valid user 
+    it("Bad follow while unauthorized", function(done) {
             request(app)
                 .post(Routes.follow)
                 .send(config.BadFollow)
@@ -48,14 +46,13 @@ describe("Follow Tests", () => {
                 .end(function(err, response) {
                     if (err) {
                         return err;
-                    }
-                    //console.log("Response Body:", response);
+                    };
                     expect(response.statusCode).to.equal(401);
                     done();
                 });
         });
-        //SECTION login with not valid user 
-        it("fine follow while unauthorized", function(done) {
+    //SECTION login with not valid user 
+    it("fine follow while unauthorized", function(done) {
             request(app)
                 .post(Routes.follow)
                 .send(config.FineFollow)
@@ -63,27 +60,23 @@ describe("Follow Tests", () => {
                 .end(function(err, response) {
                     if (err) {
                         return err;
-                    }
-                    //console.log("Response Body:", response);
+                    };
                     expect(response.statusCode).to.equal(401);
                     done();
                 });
             });
-                    //SECTION login with not valid user 
-        it("fine follow while authorized , User doesn't exist", function(done) {
-            request(app)
-                .post(Routes.follow)
-                .send(config.MissingFollow)
-                .set("Accept", "application/json")
-                .end(function(err, response) {
-                    if (err) {
-                        return err;
-                    }
-                    //console.log("Response Body:", response);
-                    expect(response.statusCode).to.equal(401);
-                    done();
-                });
-
-        });
-    
+    //SECTION login with not valid user 
+    it("fine follow while authorized , User doesn't exist", function(done) {
+        request(app)
+            .post(Routes.follow)
+            .send(config.MissingFollow)
+            .set("Accept", "application/json")
+            .end(function(err, response) {
+             if (err) {
+                return err;
+                };
+                expect(response.statusCode).to.equal(401);
+                done();
+            });
+        });    
 });
