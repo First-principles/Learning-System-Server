@@ -1,5 +1,5 @@
 REVIEW Musts for Backend 
-1-Restructure constants
-2-Helper auth based on User not just tokens
-
+1-Restructure constants 
+2-Helper auth based on User not just tokens [Done]
+3-Extend components
 

@@ -44,7 +44,7 @@ const AddArtcileComment = (req , res , next)=>{
     };
     Article.findById(ArticleInfo._id).then(
         (article)=> {
-            if (!article){return res.status(422).send({error:{message:"Lesson not found"}})}
+            if (!article){return res.status(422).send({error:{message:"article not found"}})}
             comment = new Comment(CommentInfo);
             article.comments.push(comment);
             article.save();
@@ -61,4 +61,32 @@ const AddArtcileComment = (req , res , next)=>{
     )
 }
 
-module.exports = { AddLessonComment ,AddArtcileComment };
+const AddCourseComment = (req , res , next)=>{
+    const CourseInfo = req.body.course;
+    const CommentInfo = req.body.comment;
+    if (!CommentInfo){
+        res.status(422).send({error:{message:"please provide a comment"}})
+    };
+    if (!CourseInfo){
+        res.status(422).send({error:{message:"please provide a Course"}})
+    };
+    Course.findById(CourseInfo._id).then(
+        (course)=> {
+            if (!course){return res.status(422).send({error:{message:"course not found"}})}
+            comment = new Comment(CommentInfo);
+            course.comments.push(comment);
+            course.save();
+            comment.course = ArticleInfo;
+            comment.save().then(
+                ()=>{
+                    res.status(202).send({
+                        course,
+                        comment
+                    })
+                }
+            ).catch(next);
+        }
+    )
+}
+
+module.exports = { AddLessonComment ,AddArtcileComment , AddCourseComment};
