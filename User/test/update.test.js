@@ -4,6 +4,7 @@ const { RouteNames } = require("../../constants/constants");
 var expect = require('chai').expect;
 const config = require("../../config/constants");
 
+//SECTION Updating User info Tests
 describe('Update Tests', () => {
 
     it("update user while not autorized", (done) => {

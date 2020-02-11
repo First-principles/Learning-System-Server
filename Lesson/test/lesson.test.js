@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../../server/server");
-const { RouteNames } = require("../../constants/constants");
+const Route = require("../constants");
 var expect = require('chai').expect;
 const config = require("../../config/constants");
 
@@ -8,7 +8,7 @@ describe('Lessons Tests', () => {
 
     it("Create lesson while not autorized", (done) => {
         request(app)
-            .post(RouteNames.AddLesson)
+            .post(Route.AddLesson)
             .send(config.lesson)
             .set("Content-Type", "application/json")
             .end(function(err, response) {
@@ -22,7 +22,7 @@ describe('Lessons Tests', () => {
 
     it("Create Lesson while autorized", (done) => {
         request(app)
-            .post(RouteNames.AddLesson)
+            .post(Route.AddLesson)
             .send(config.lesson)
             .set("Content-Type", "application/json")
             .set("Accept", "application/json")
@@ -40,7 +40,7 @@ describe('Lessons Tests', () => {
         const lesson = config.lesson;
         lesson.course = "";
         request(app)
-            .post(RouteNames.AddLesson)
+            .post(Route.AddLesson)
             .send(lesson)
             .set("Content-Type", "application/json")
             .set("Accept", "application/json")

@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../../server/server");
-const { RouteNames } = require("../../constants/constants");
+const Routes = require("../constants");
 var expect = require('chai').expect;
 const config = require("../../config/constants");
 
@@ -11,7 +11,7 @@ describe('Registeration Tests', () => {
     //SECTION Fine Registeration
     it("FINE REGISTERATION", (done) => {
         request(app)
-            .post(RouteNames.AddUser)
+            .post(Routes.AddUser)
             .send(config.ValidUser)
             .end(function(err, response) {
                 if (err) {
@@ -26,7 +26,7 @@ describe('Registeration Tests', () => {
     //SECTION Bad Registeration
     it("Bad Registeration", function(done) {
         request(app)
-            .post(RouteNames.AddUser)
+            .post(Routes.AddUser)
             .send(config.NotValidUser)
             .end(function(err, response) {
                 if (err) {
@@ -38,7 +38,7 @@ describe('Registeration Tests', () => {
     })
     it("Register already registered", function(done) {
         request(app)
-            .post(RouteNames.AddUser)
+            .post(Routes.AddUser)
             .send(config.ValidLoginUser)
             .end(function(err, response) {
                 if (err) {
@@ -52,7 +52,7 @@ describe('Registeration Tests', () => {
     });
     it("Registeration with already exists", function(done) {
         request(app)
-            .post(RouteNames.AddUser)
+            .post(Routes.AddUser)
             .send(config.ValidLoginUser)
             .end(function(err, response) {
                 if (err) {
