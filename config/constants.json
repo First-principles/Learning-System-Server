@@ -145,9 +145,30 @@
                 "title":"how to be a nice programming",
                 "body":"YOU SHOULD NEVER!"
             }
- }
-
-
+ }, "GoodCourseComment":{
+    "course":{
+        "_id" :"5e33ee5a799308594e07746f",
+        "title":"hi"
+    },
+    "comment":{
+        "body":"HI"
+    },
+    "user": {
+        "_id":"5e33d05e2b8bd020b86ca9e4",
+        "password": "hi",
+        "email": "hi@gmail.com"
+    }
+},
+"BadCourseComment":{
+    "comment":{
+        "body":"HI"
+    },
+    "user": {
+        "_id":"5e33d05e2b8bd020b86ca9e4",
+        "password": "hi",
+        "email": "hi@gmail.com"
+    }
+}
     
 
 }
