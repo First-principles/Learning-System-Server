@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
-var Course = mongoose.model('Course');
 var User = mongoose.model('User');
+var Course = mongoose.model('Course');
 var Comment = mongoose.model("Comment");
 var Lesson = mongoose.model("Lesson");
 var Article = mongoose.model("Article");
 
+//SECTION add comment on a lesson
 const AddLessonComment = (req , res , next)=>{
     const LessonInfo = req.body.lesson;
     const CommentInfo = req.body.comment;
@@ -33,7 +34,8 @@ const AddLessonComment = (req , res , next)=>{
     )
 };
 
-const AddArtcileComment = (req , res , next)=>{
+//SECTION add comment on an article
+const AddArticleComment = (req , res , next)=>{
     const ArticleInfo = req.body.article;
     const CommentInfo = req.body.comment;
     if (!CommentInfo){
@@ -59,8 +61,9 @@ const AddArtcileComment = (req , res , next)=>{
             ).catch(next);
         }
     )
-}
+};
 
+//SECTION add comment on a course
 const AddCourseComment = (req , res , next)=>{
     const CourseInfo = req.body.course;
     const CommentInfo = req.body.comment;
@@ -87,6 +90,6 @@ const AddCourseComment = (req , res , next)=>{
             ).catch(next);
         }
     )
-}
+};
 
-module.exports = { AddLessonComment ,AddArtcileComment , AddCourseComment};
+module.exports = { AddLessonComment ,AddArticleComment , AddCourseComment};
