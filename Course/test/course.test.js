@@ -4,7 +4,7 @@ const { RouteNames } = require("../../constants/constants");
 var expect = require('chai').expect;
 const config = require("../../config/constants");
 
-describe('Courses Tests', () => {
+describe('Creating Courses Tests', () => {
 
     it("Create Course while not autorized", (done) => {
         request(app)
