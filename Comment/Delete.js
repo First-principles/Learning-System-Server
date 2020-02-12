@@ -33,3 +33,32 @@ const RemoveLessonComment = (req , res , next)=>{
         }
     )
 };
+
+//SECTION remove comment on an Article
+const RemoveLessonComment = (req , res , next)=>{
+    const ArticleInfo = req.body.article;
+    const CommentInfo = req.body.comment;
+
+    if (!CommentInfo){
+        res.status(422).send({error:{message:"please provide a comment"}})
+    };
+    if (!ArticleInfo){
+        res.status(422).send({error:{message:"please provide a lesson"}})
+    };
+    Article.findById(ArticleInfo._id).then(
+        (article)=> {
+            if (!article){return res.status(422).send({error:{message:"article not found"}})}
+            Comment.deleteOne({_id:CommentInfo._id});
+
+            article.comments.splice(article.comments.indexOf(CommentInfo._id),1);
+
+            article.save().then(
+                ()=>{
+                    res.status(202).send({
+                        article:ArticleInfo
+                    })
+                }
+            ).catch(next);
+        }
+    )
+};
