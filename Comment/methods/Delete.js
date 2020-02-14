@@ -63,4 +63,33 @@ const RemoveArticleComment = (req , res , next)=>{
     )
 };
 
-module.exports = {RemoveLessonComment , RemoveArticleComment }
+//SECTION remove comment on an Course
+const RemoveCourseComment = (req , res , next)=>{
+    const CourseInfo = req.body.course;
+    const CommentInfo = req.body.comment;
+
+    if (!CommentInfo){
+        res.status(422).send({error:{message:"please provide a comment"}})
+    };
+    if (!CourseInfo){
+        res.status(422).send({error:{message:"please provide a course"}})
+    };
+    Course.findById(CourseInfo._id).then(
+        (course)=> {
+            if (!course){return res.status(422).send({error:{message:"course not found"}})}
+            Comment.deleteOne({_id:CommentInfo._id});
+
+            course.comments.splice(course.comments.indexOf(CommentInfo._id),1);
+
+            course.save().then(
+                ()=>{
+                    res.status(202).send({
+                        course:CourseInfo
+                    })
+                }
+            ).catch(next);
+        }
+    )
+};
+
+module.exports = {RemoveLessonComment , RemoveArticleComment ,RemoveCourseComment }

@@ -1,8 +1,8 @@
 const Route = {
     base: "/",
-    AddComment2Lesson: "/courses/lessons/comments",
-    AddComment2Article:"/articles/comments",
-    AddComment2Course:"/courses/comments"
+    Comment2Lesson: "/courses/lessons/comments",
+    Comment2Article:"/articles/comments",
+    Comment2Course:"/courses/comments"
 };
 
 module.exports = Route;
