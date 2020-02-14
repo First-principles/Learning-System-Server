@@ -4,17 +4,17 @@ const Route = require("../constants");
 var expect = require('chai').expect;
 const config = require("../../config/constants");
 
-describe('Comment Tests on Courses', () => {
+describe('Delete Comment Tests on Articles', () => {
 
     it("Create comment while unautorized", (done) => {
         request(app)
-            .post(Route.Comment2Course)
-            .send(config.GoodCourseComment)
+            .post(Route.Comment2Article)
+            .send(config.GoodComment)
             .set("Accept", "application/json")
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
+                };
                 expect(response.statusCode).to.equal(401);
                 done();
             });
@@ -22,27 +22,27 @@ describe('Comment Tests on Courses', () => {
 
     it("Add comment for non existing lesson and being unauthorized",(done)=>{
         request(app)
-            .post(Route.Comment2Course)
-            .send(config.BadCourseComment)
+            .post(Route.Comment2Article)
+            .send(config.BadComment)
             .set("Content-Type", "application/json")
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
+                };
                 expect(response.statusCode).to.equal(401);
                 done();
             });
     });
-    it("Add comment for non existing lesson and being authorized",(done)=>{
+    it("delete comment for non existing lesson and being authorized",(done)=>{
         request(app)
-            .post(Route.Comment2Course)
-            .send(config.BadCourseComment)
+            .post(Route.Comment2Article)
+            .send(config.BadComment)
             .set("Content-Type", "application/json")
             .set('authorization', config.AuthToken)
             .end(function(err, response) {
                 if (err) {
                     return err;
-                }
+                };
                 expect(response.statusCode).to.equal(422);
                 done();
             });
