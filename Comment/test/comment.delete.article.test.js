@@ -19,6 +19,21 @@ describe('Delete Comment Tests on Articles', () => {
                 done();
             });
     });
+    // it("delete comment while autorized", (done) => {
+    //     request(app)
+    //         .delete(Route.Comment2Article)
+    //         .send(config.GoodComment)
+    //         .set("Accept", "application/json")
+    //         .set('authorization', config.AuthToken)
+    //         .end(function(err, response) {
+    //             if (err) {
+    //                 return err;
+    //             }
+    //             console.log(response)
+    //             expect(response.statusCode).to.equal(202);
+    //             done();
+    //         });
+    // });
 
     it("delete comment for non existing lesson and being unauthorized",(done)=>{
         request(app)

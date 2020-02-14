@@ -19,6 +19,21 @@ describe('Delete Comment Tests on lessons', () => {
                 done();
             });
     });
+    it("Create comment while being autorized", (done) => {
+        request(app)
+            .delete(Route.Comment2Lesson)
+            .send(config.GoodComment)
+            .set("Accept", "application/json")
+            .set('authorization', config.AuthToken)
+            .end(function(err, response) {
+                if (err) {
+                    return err;
+                }
+                expect(response.statusCode).to.equal(202);
+                done();
+            });
+    });
+
     it("Add comment for non existing lesson and being unauthorized",(done)=>{
         request(app)
             .delete(Route.Comment2Lesson)

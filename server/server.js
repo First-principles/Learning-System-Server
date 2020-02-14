@@ -10,13 +10,14 @@ var lessonComponent = require("../Lesson/index");
 var commentComponent = require("../Comment/index");
 var articleComponent = require("../Article/index");
 
-//NOTE Import API
+//SECTION Using API Components
 app.use(userComponent);
 app.use(courseComponent);
 app.use(lessonComponent);
 app.use(commentComponent);
 app.use(articleComponent);
 
+//SECTION Connecting to MongoDB
 if (isProduction) {
     mongoose.connect(process.env.MONGODB_URI, {
         useUnifiedTopology: true,
@@ -31,4 +32,6 @@ if (isProduction) {
     });
     mongoose.set('debug', true);
 }
+
+//NOTE exporting app to avoid singleton violation
 module.exports = app;

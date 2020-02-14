@@ -43,7 +43,7 @@ const RemoveArticleComment = (req , res , next)=>{
         res.status(422).send({error:{message:"please provide a comment"}})
     };
     if (!ArticleInfo){
-        res.status(422).send({error:{message:"please provide a lesson"}})
+        res.status(422).send({error:{message:"please provide an article"}})
     };
     Article.findById(ArticleInfo._id).then(
         (article)=> {
