@@ -8,7 +8,7 @@ describe('Delete Comment Tests on Articles', () => {
 
     it("Create comment while unautorized", (done) => {
         request(app)
-            .post(Route.Comment2Article)
+            .delete(Route.Comment2Article)
             .send(config.GoodComment)
             .set("Accept", "application/json")
             .end(function(err, response) {
@@ -20,9 +20,9 @@ describe('Delete Comment Tests on Articles', () => {
             });
     });
 
-    it("Add comment for non existing lesson and being unauthorized",(done)=>{
+    it("delete comment for non existing lesson and being unauthorized",(done)=>{
         request(app)
-            .post(Route.Comment2Article)
+            .delete(Route.Comment2Article)
             .send(config.BadComment)
             .set("Content-Type", "application/json")
             .end(function(err, response) {
@@ -35,7 +35,7 @@ describe('Delete Comment Tests on Articles', () => {
     });
     it("delete comment for non existing lesson and being authorized",(done)=>{
         request(app)
-            .post(Route.Comment2Article)
+            .delete(Route.Comment2Article)
             .send(config.BadComment)
             .set("Content-Type", "application/json")
             .set('authorization', config.AuthToken)

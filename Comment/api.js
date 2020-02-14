@@ -14,7 +14,7 @@ router.post(Route.Comment2Article, auth.required, AddArticleComment);
 router.post(Route.Comment2Course, auth.required, AddCourseComment);
 
 //SECTION delete Commment on an article
-router.delete(Route.Comment2Course, auth.required, RemoveArticleComment);
+router.delete(Route.Comment2Article, auth.required, RemoveArticleComment);
 
 //SECTION delete Commment on an lesson
 router.delete(Route.Comment2Lesson, auth.required, RemoveLessonComment);
