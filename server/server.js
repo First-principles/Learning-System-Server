@@ -1,6 +1,6 @@
 const app = require("./intialize");
 const mongoose = require("mongoose");
-const config = require('../config/config');
+const LocalDB = require('../config/config').LocalDB;
 var isProduction = process.env.NODE_ENV === 'production';
 
 //SECTION Importing components
@@ -24,7 +24,7 @@ if (isProduction) {
         useCreateIndex: true,
     });
 } else {
-    mongoose.connect(config.LocalDB, {
+    mongoose.connect(LocalDB, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
