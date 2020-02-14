@@ -35,7 +35,7 @@ const RemoveLessonComment = (req , res , next)=>{
 };
 
 //SECTION remove comment on an Article
-const RemoveLessonComment = (req , res , next)=>{
+const RemoveArticleComment = (req , res , next)=>{
     const ArticleInfo = req.body.article;
     const CommentInfo = req.body.comment;
 
@@ -62,3 +62,5 @@ const RemoveLessonComment = (req , res , next)=>{
         }
     )
 };
+
+module.exports = {RemoveLessonComment , RemoveArticleComment }

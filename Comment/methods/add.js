@@ -9,7 +9,7 @@ var Article = mongoose.model("Article");
 const AddLessonComment = (req , res , next)=>{
     const LessonInfo = req.body.lesson;
     const CommentInfo = req.body.comment;
-    const UserInfo;//FIXME 
+    //const UserInfo;//FIXME 
     if (!CommentInfo){
         res.status(422).send({error:{message:"please provide a comment"}})
     };
