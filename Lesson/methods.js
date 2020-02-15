@@ -40,4 +40,9 @@ const addlesson = (req, res, next) => {
         );
     })
 };
-module.exports = addlesson;
+
+const removelesson = (req, res, next) => {
+    
+};
+
+module.exports = {addlesson,removelesson};

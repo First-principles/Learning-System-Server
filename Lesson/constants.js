@@ -1,6 +1,6 @@
 const Route = {
     base: "/",
-    AddLesson: "/courses/lessons",
+    Lesson: "/courses/lessons",
     AddCourse: "/courses",
     AddComment: "/courses/lessons/comments",
     lesson: "/courses/:course/lessons/:lesson",

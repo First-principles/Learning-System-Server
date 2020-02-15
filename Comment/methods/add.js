@@ -9,7 +9,7 @@ var Article = mongoose.model("Article");
 const AddLessonComment = (req , res , next)=>{
     const LessonInfo = req.body.lesson;
     const CommentInfo = req.body.comment;
-    //const UserInfo;//FIXME 
+    //FIXME const UserInfo; 
     if (!CommentInfo){
         res.status(422).send({error:{message:"please provide a comment"}})
     };
@@ -18,8 +18,8 @@ const AddLessonComment = (req , res , next)=>{
     };
     Lesson.findById(LessonInfo._id).then(
         (lesson)=> {
-            comment = new Comment(CommentInfo)
             if (!lesson){return res.status(422).send({error:{message:"Lesson not found"}})}
+            comment = new Comment(CommentInfo)
             lesson.comments.push(comment);
             comment.lesson = LessonInfo;
             comment.save().then(
@@ -43,7 +43,7 @@ const AddArticleComment = (req , res , next)=>{
         res.status(422).send({error:{message:"please provide a comment"}})
     };
     if (!ArticleInfo){
-        res.status(422).send({error:{message:"please provide a Article"}})
+        res.status(422).send({error:{message:"please provide an Article"}})
     };
     Article.findById(ArticleInfo._id).then(
         (article)=> {
