@@ -22,5 +22,4 @@ router.post(Routes.follow , helper.required , followUser);
 //SECTION add superuser
 router.post(Routes.admin , helper.required , addAdmin);
 
-
 module.exports = router;
