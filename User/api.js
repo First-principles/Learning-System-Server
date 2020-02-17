@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-const { adduser, login , updateUser ,followUser } = require('./methods');
+const { adduser, login , updateUser ,followUser ,addAdmin} = require('./methods');
 const {params , userPopulation} = require('./populations');
 const Routes = require("./constants");
 const helper = require("../helper/helper");
@@ -18,5 +18,9 @@ router.post(Routes.update , helper.required , updateUser);
 
 //SECTION follow user
 router.post(Routes.follow , helper.required , followUser);
+
+//SECTION add superuser
+router.post(Routes.admin , helper.required , addAdmin);
+
 
 module.exports = router;

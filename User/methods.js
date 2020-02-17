@@ -11,7 +11,11 @@ const adduser = (req, res, next) => {
         user.email = UserInfo.email;
         user.setPassword(UserInfo.password);
         user.token = user.generateJWT();
-    } catch (e) {}
+    } catch (e) {
+        return res.status(422).send({
+            error:{message:"error during registeration"}
+        });
+    }
 
     user.save(function(err) {
         if (err) {
@@ -29,6 +33,38 @@ const adduser = (req, res, next) => {
     });
 };
 
+const addAdmin = () => {    var user = new User();
+    const UserInfo = req.body.user;
+    try {
+        user.username = UserInfo.username;
+        user.role = 'admin';
+        user.first_name = UserInfo.first_name;
+        user.last_name = UserInfo.last_name;
+        user.email = UserInfo.email;
+        user.setPassword(UserInfo.password);
+        user.token = user.generateJWT();
+    } catch (e) {
+        return res.status(422).send({
+            error:{message:"error during registeration"}
+        });
+    }
+
+    user.save(function(err) {
+        if (err) {
+            if (err.name === 'MongoError' && err.code === 11000) {
+                return res.status(422).send({ succes: false, message: 'User already exist!' });
+            }
+            return res.status(422).send(err);
+        }
+        res.status(202).json({
+            user:{
+            username: user.username,
+            email: user.email,
+            token: user.token}
+        });
+    });
+}
+
 const login = async(req, res, next) => {
     const UserInfo = req.body.user;
     if (!UserInfo.email) {
@@ -37,7 +73,7 @@ const login = async(req, res, next) => {
     if (!UserInfo.password) {
         return res.status(422).json({ errors: { password: "can't be blank" } });
     };
-    var user = await User.findOne({ email: UserInfo.email }).then(
+    await User.findOne({ email: UserInfo.email }).then(
         user => {
             if (user.validPassword(UserInfo.password)) {
                 return res.status(202).json(
@@ -116,4 +152,4 @@ const followUser = (req,res,next)=>{
     }).catch(next)
 }
 
-module.exports = { adduser, login  , updateUser , followUser};
+module.exports = { adduser, login  , updateUser , followUser , addAdmin};

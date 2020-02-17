@@ -35,6 +35,20 @@ var UserSchema = new mongoose.Schema({
         match: [/\S+@\S+\.\S+/, 'is invalid'],
         index: true,
     },
+    roles: {
+        type: [{
+            type: String,
+            enum: ['user', 'admin']
+        }],
+        default: ['user']
+    },
+    react: {
+        type: [{
+            type: String,
+            enum: ['like', 'dislike']
+        }],
+        default: ['like']
+    },
     contacts: [],
     bio: String,
     avatar: String,
