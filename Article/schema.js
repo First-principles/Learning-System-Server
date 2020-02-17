@@ -11,4 +11,4 @@ var LessonSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-mongoose.model('Article', LessonSchema);
+module.exports = LessonSchema =  mongoose.model('Article', LessonSchema);

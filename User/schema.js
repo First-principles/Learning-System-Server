@@ -111,4 +111,4 @@ UserSchema.methods.validPassword = function(password) {
     return this.hash === hash;
 };
 
-mongoose.model('User', UserSchema);
+module.exports = UserSchema =  mongoose.model('User', UserSchema);
