@@ -2,8 +2,11 @@ const app = require("./intialize");
 const mongoose = require("mongoose");
 const LocalDB = require('../config/config').LocalDB;
 var isProduction = process.env.NODE_ENV === 'production';
-const User = require('../User/schema')
-const Article = require('../Article/schema')
+
+//SECTION Import schemas
+const User = require('../User/schema');
+const Article = require('../Article/schema');
+const Comment = require("../Comment/schema");
 
 //SECTION ADMINBRO
 const AdminBro = require('admin-bro')
@@ -47,12 +50,14 @@ const contentParent = {
 
 const adminBro = new AdminBro({
     resources: [
-        {resource: User, options:{ isId:false } } ,
-        {resource: Article, options:{ } } 
-      ],
+        {resource: User,options:{isId:false}} ,
+        {resource: Article},
+        {resource: Comment}
+
+        ],
 
       branding: {
-        companyName: 'Learn-Web',
+        companyName: 'Learn-Web-Community',
       },
           rootPath: '/admin',
   })

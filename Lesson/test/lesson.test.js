@@ -8,7 +8,7 @@ describe('Lessons Tests', () => {
 
     it("Create lesson while not autorized", (done) => {
         request(app)
-            .post(Route.AddLesson)
+            .post(Route.Lesson)
             .send(config.lesson)
             .set("Content-Type", "application/json")
             .end(function(err, response) {
@@ -22,7 +22,7 @@ describe('Lessons Tests', () => {
 
     it("Create Lesson while autorized", (done) => {
         request(app)
-            .post(Route.AddLesson)
+            .post(Route.Lesson)
             .send(config.lesson)
             .set("Content-Type", "application/json")
             .set("Accept", "application/json")
@@ -40,7 +40,7 @@ describe('Lessons Tests', () => {
         const lesson = config.lesson;
         lesson.course = "";
         request(app)
-            .post(Route.AddLesson)
+            .post(Route.Lesson)
             .send(lesson)
             .set("Content-Type", "application/json")
             .set("Accept", "application/json")
