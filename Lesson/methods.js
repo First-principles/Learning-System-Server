@@ -44,7 +44,7 @@ const addlesson = (req, res, next) => {
 const removelesson = (req, res, next) => {
     const LessonInfo = req.body.lesson;
     const CourseInfo = req.body.course;
-    const UserInfo = req.body.user;
+    // const UserInfo = req.body.user;
 
     if (!CourseInfo) {
         return res.status(422).send({ errors: { message: "Course not found" } });

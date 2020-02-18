@@ -10,4 +10,4 @@ var CourseSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, { timestamps: true });
 
-mongoose.model('Course', CourseSchema);
+module.exports = CourseSchema  = mongoose.model('Course', CourseSchema);

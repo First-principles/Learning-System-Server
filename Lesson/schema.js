@@ -12,4 +12,4 @@ var LessonSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-mongoose.model('Lesson', LessonSchema);
+module.exports =  LessonSchema    = mongoose.model('Lesson', LessonSchema);

@@ -7,6 +7,8 @@ var isProduction = process.env.NODE_ENV === 'production';
 const User = require('../User/schema');
 const Article = require('../Article/schema');
 const Comment = require("../Comment/schema");
+const Lesson = require("../Lesson/schema");
+const Course = require("../Course/schema");
 
 //SECTION ADMINBRO
 const AdminBro = require('admin-bro')
@@ -37,7 +39,7 @@ if (isProduction) {
         useCreateIndex: true,
     });
 } else {
-    DB =mongoose.connect(LocalDB, {
+    DB = mongoose.connect(LocalDB, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -50,12 +52,14 @@ const contentParent = {
 
 const adminBro = new AdminBro({
     resources: [
-        {resource: User,options:{isId:false}} ,
-        {resource: Article},
-        {resource: Comment}
+        {resource: User},
+        {resource:Lesson},
+        {resource:Course},
+        {resource:Comment},
+        {resource:Article}
 
         ],
-
+      database:DB,
       branding: {
         companyName: 'Learn-Web-Community',
       },
