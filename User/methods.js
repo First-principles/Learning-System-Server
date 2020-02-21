@@ -56,12 +56,7 @@ const addAdmin = () => {    var user = new User();
             }
             return res.status(422).send(err);
         }
-        res.status(202).json({
-            user:{
-            username: user.username,
-            email: user.email,
-            token: user.token}
-        });
+        res.status(202).json(user.toAuthJSON());
     });
 }
 
