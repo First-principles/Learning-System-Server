@@ -106,6 +106,31 @@ UserSchema.methods.toAuthJSON = function() {
     };
 };
 
+UserSchema.methods.handleInfo = function(info){
+    if (typeof info.username !== 'undefined') {
+        this.username = info.username;
+    }
+    if (typeof info.email !== 'undefined') {
+        this.email = info.email;
+    }
+    if (typeof info.first_name !== 'undefined') {
+        this.first_name = info.first_name;
+    }
+    if (typeof info.last_name !== 'undefined') {
+        this.last_name = info.last_name;
+    }
+    if (typeof info.bio !== 'undefined') {
+        this.bio = info.bio;
+    }
+    if (typeof info.avatar !== 'undefined') {
+        this.avatar = info.avatar;
+    }
+    if (typeof info.password !== 'undefined') {
+        this.setPassword(info.password);
+    }
+
+}
+
 UserSchema.methods.validPassword = function(password) {
     var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
     return this.hash === hash;

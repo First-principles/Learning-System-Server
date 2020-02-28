@@ -25,10 +25,7 @@ const adduser = (req, res, next) => {
             return res.status(422).send(err);
         }
         res.status(202).json({
-            user:{
-            username: user.username,
-            email: user.email,
-            token: user.token}
+            user:user.toAuthJSON()
         });
     });
 };
@@ -91,31 +88,9 @@ const updateUser = (req ,res, next)=>{
         if (!updateData){
             res.status(422).send({"message":"please provide what you want to update"})
         }
-        User.findById(req.body.user._id).then(function(user) {
+        User.findById(updateData._id).then(function(user) {
             if (!user) { return res.sendStatus(401); }
-
-            //NOTE  only update fields that were actually passed...
-            if (typeof updateData.username !== 'undefined') {
-                user.username = updateData.username;
-            }
-            if (typeof updateData.email !== 'undefined') {
-                user.email = updateData.email;
-            }
-            if (typeof updateData.first_name !== 'undefined') {
-                user.first_name = updateData.first_name;
-            }
-            if (typeof updateData.last_name !== 'undefined') {
-                user.last_name = updateData.last_name;
-            }
-            if (typeof updateData.bio !== 'undefined') {
-                user.bio = updateData.bio;
-            }
-            if (typeof updateData.avatar !== 'undefined') {
-                user.avatar = updateData.avatar;
-            }
-            if (typeof updateData.password !== 'undefined') {
-                user.setPassword(updateData.password);
-            }
+            user.handleInfo(updateData);
             return user.save()
                 .then(function() {
                     return res.json({ user: user.toAuthJSON() });

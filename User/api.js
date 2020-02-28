@@ -14,7 +14,7 @@ router.post(Routes.AddUser, adduser);
 router.post(Routes.Login, login);
 
 //SECTION update user
-router.post(Routes.update , helper.required , updateUser);
+router.put(Routes.update , helper.required , updateUser);
 
 //SECTION follow user
 router.post(Routes.follow , helper.required , followUser);
