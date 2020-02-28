@@ -4,6 +4,12 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 /**
+ * @username => User's username
+ * @first_name => User's first name
+ * @last_name => User's last name
+ * @email => User's email
+ * @role => restricted for most users 
+ * @contacts => User's contacts like (number , linkedIn , etc ..)
  * @courses => The courses made by user
  * @comments => The comments made by user
  * 
@@ -35,13 +41,14 @@ var UserSchema = new mongoose.Schema({
         match: [/\S+@\S+\.\S+/, 'is invalid'],
         index: true,
     },
-    roles: {
+    role: {
         type: [{
             type: String,
             enum: ['user', 'admin']
         }],
         default: ['user']
     },
+    //TODO 
     react: {
         type: [{
             type: String,
