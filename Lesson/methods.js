@@ -31,7 +31,9 @@ const addlesson = (req, res, next) => {
             course.save();
             user.save();
             lesson.save().then(() => {
-                res.status(202).send({ lesson });
+                res.status(202).send({ 
+                    //TODO toLesssonJSON
+                    lesson });
             }).catch(next);
         }).catch(
             () => {

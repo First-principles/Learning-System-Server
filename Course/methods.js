@@ -27,6 +27,7 @@ const AddCourse = (req, res, next) => {
     } catch (e) {}
     course.save().then(() => {
         res.status(202).send({
+            //TODO toCourseJSON
             title: course.title,
             description: course.description,
             id: course.id

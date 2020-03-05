@@ -19,7 +19,10 @@ const addarticle = (req, res, next) => {
             user.articles.push(article);
             user.save();
             article.save().then(() => {
-                res.status(202).send({ article });
+                
+                res.status(202).send({ 
+                    //TODO toArticleJSON
+                    article });
             }).catch(next);
         })
 };

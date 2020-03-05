@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+//TODO encapsulate messages
 const adduser = (req, res, next) => {
     var user = new User();
     const UserInfo = req.body.user;
