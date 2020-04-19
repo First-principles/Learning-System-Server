@@ -1,5 +1,5 @@
 
-# Learn Web Community PLATFORM
+# Learning PLATFORM
 
 ## Getting started
 To get the Node server running locally:
