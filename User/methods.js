@@ -4,6 +4,17 @@ var User = mongoose.model("User");
 const register = (req, res, next) => {
   var user = new User();
   const UserInfo = req.body.user;
+  if (
+    !UserInfo ||
+    !UserInfo.email ||
+    !UserInfo.password ||
+    !UserInfo.first_name ||
+    !UserInfo.last_name
+  ) {
+    return res
+      .status(422)
+      .send({ error: { message: "data not provided properly" } });
+  }
   try {
     user.username = UserInfo.username;
     user.first_name = UserInfo.first_name;
@@ -36,16 +47,21 @@ const register = (req, res, next) => {
 
 const login = (req, res, next) => {
   const UserInfo = req.body.user;
+  if (!UserInfo || !UserInfo.email || !UserInfo.password) {
+    return res
+      .status(422)
+      .send({ error: { message: "data not provided properly" } });
+  }
   if (!UserInfo.email) {
-    res.send(422).json({ error: { message: "please provide email " } });
+    return res.status(422).send({ error: { message: "please provide email " } });
   }
   if (!UserInfo.password) {
-    return res.status(422).json({ errors: { password: "can't be blank" } });
+    return res.status(422).send({ errors: { password: "can't be blank" } });
   }
   User.findOne({ email: UserInfo.email })
     .then((user) => {
       if (user.validPassword(UserInfo.password)) {
-        return res.status(202).json(user.toAuthJSON());
+        return res.status(202).send({user:user.toAuthJSON()});
       } else {
         return res
           .status(422)
@@ -62,7 +78,7 @@ const login = (req, res, next) => {
 const update = (req, res, next) => {
   const updateData = req.body.user;
   if (!updateData) {
-    res.status(422).send({ message: "please provide what you want to update" });
+    return res.status(422).send({ message: "please provide what you want to update" });
   }
   User.findById(updateData._id)
     .then(function (user) {

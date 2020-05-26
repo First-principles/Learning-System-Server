@@ -6,7 +6,13 @@ const parameters = require("./populations");
 const Routes = require("./constants");
 const helper = require("../helper/helper");
 const params = parameters.params;
-// router.param(params.user,userPopulation);
+
+//SECTION routes params
+router.param(params.user,parameters.userPopulation);
+router.param(params.course,parameters.coursePopulation);
+router.param(params.lesson,parameters.lessonPopulation);
+router.param(params.article,parameters.articlePopulation);
+router.param(params.comment,parameters.commentPopulation);
 
 //SECTION add user
 router.post(Routes.AddUser, Controlers.register);
