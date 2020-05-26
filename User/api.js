@@ -2,10 +2,11 @@ var router = require('express').Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 const { adduser, login , updateUser ,followUser ,addAdmin} = require('./methods');
-const {params , userPopulation} = require('./populations');
+// const {params , userPopulation} = require('./populations');
 const Routes = require("./constants");
 const helper = require("../helper/helper");
-router.param(params.user,userPopulation);
+
+// router.param(params.user,userPopulation);
 
 //SECTION add user
 router.post(Routes.AddUser, adduser);
