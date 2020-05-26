@@ -69,11 +69,15 @@ const params = {
   course: "course",
   comment: "comment",
   user: "user",
+  lesson: "lesson",
+  article: "article",
 };
 
 module.exports = {
   coursePopulation,
   commentPopulation,
   userPopulation,
+  articlePopulation,
+  lessonPopulation,
   params,
 };
