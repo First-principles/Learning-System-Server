@@ -108,7 +108,7 @@ UserSchema.methods.toAuthJSON = function() {
     };
 };
 
-UserSchema.methods.handleInfo = function(info){
+UserSchema.methods.assignInfo = function(info){
     Object.keys(info).map((key)=>{
         if (key==="password"){this.setPassword(info[key])}
         this[key] = info[key];

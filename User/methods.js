@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
 
-//TODO encapsulate messages
 const register = (req, res, next) => {
   var user = new User();
   const UserInfo = req.body.user;
@@ -18,52 +17,24 @@ const register = (req, res, next) => {
     });
   }
 
-  user.save(function (err) {
-    if (err) {
-      if (err.name === "MongoError" && err.code === 11000) {
-        return res
-          .status(422)
-          .send({ succes: false, message: "User already exist!" });
+  user
+    .save(function (err) {
+      if (err) {
+        if (err.name === "MongoError" && err.code === 11000) {
+          return res
+            .status(422)
+            .send({ succes: false, message: "User already exist!" });
+        }
+        return res.status(422).send(err);
       }
-      return res.status(422).send(err);
-    }
-    res.status(202).json({
-      user: user.toAuthJSON(),
-    });
-  });
+      res.status(202).json({
+        user: user.toAuthJSON(),
+      });
+    })
+    .catch(next);
 };
 
-const addAdmin = () => {
-  var user = new User();
-  const UserInfo = req.body.user;
-  try {
-    user.username = UserInfo.username;
-    user.role = "admin";
-    user.first_name = UserInfo.first_name;
-    user.last_name = UserInfo.last_name;
-    user.email = UserInfo.email;
-    user.setPassword(UserInfo.password);
-    user.token = user.generateJWT();
-  } catch (e) {
-    return res.status(422).send({
-      error: { message: "error during registeration" },
-    });
-  }
-
-  user.save(function (err) {
-    if (err) {
-      if (err.name === "MongoError" && err.code === 11000) {
-        return res
-          .status(422)
-          .send({ succes: false, message: "User already exist!" });
-      }
-      return res.status(422).send(err);
-    }
-    res.status(202).json(user.toAuthJSON());
-  });
-};
-
-const login = async (req, res, next) => {
+const login = (req, res, next) => {
   const UserInfo = req.body.user;
   if (!UserInfo.email) {
     res.send(422).json({ error: { message: "please provide email " } });
@@ -71,7 +42,7 @@ const login = async (req, res, next) => {
   if (!UserInfo.password) {
     return res.status(422).json({ errors: { password: "can't be blank" } });
   }
-  await User.findOne({ email: UserInfo.email })
+  User.findOne({ email: UserInfo.email })
     .then((user) => {
       if (user.validPassword(UserInfo.password)) {
         return res.status(202).json(user.toAuthJSON());
@@ -98,14 +69,12 @@ const update = (req, res, next) => {
       if (!user) {
         return res.sendStatus(401);
       }
-      user.handleInfo(updateData);
+      user.assignInfo(updateData);
       return user.save().then(function () {
         return res.json({ user: user.toAuthJSON() });
       });
     })
-    .catch(() => {
-      res.status(422).send({ message: "couldn't update user" });
-    });
+    .catch(next);
 };
 const followUser = (req, res, next) => {
   const userInfo = req.body.user;
@@ -139,6 +108,6 @@ const followUser = (req, res, next) => {
     .catch(next);
 };
 
-const userControler = { register, login, update , followUser};
+const userControler = { register, login, update, followUser };
 
 module.exports = userControler;
